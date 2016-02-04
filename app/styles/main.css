@@ -71,3 +71,25 @@ body {
   margin-top: 15px;
   margin-bottom: 20px;
 }
+
+.eventText{
+  margin-left: 3px;
+  font-weight: 500;
+  font-size: larger;
+}
+
+.blackRule{
+  background-color: #000000;
+  height: 1px;
+}
+
+.colouredHead, .colouredHead tr th{
+  background-color: #2E608C;
+  color: #FFFFFF;
+  text-align: center;
+}
+
+.dataCell, .dataCell tr td{
+  text-align: center;
+  font-weight: 600;
+}
