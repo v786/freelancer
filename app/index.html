@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="styles/main.css">
   <!-- endbuild -->
 </head>
-<body ng-app="frApp" ng-controller="RootpagectrlCtrl">
+<body ng-app="frApp" ng-controller="IndexCtrl">
 <!--[if lte IE 8]>
 <p class="browseHappy">Update your browser for better experience.</p>
 <![endif]-->
@@ -28,14 +28,15 @@
   </a>
 </div>
 
-<div class="backgroundEventImage" style="background-image: url('./images/demo1300x200.jpg');">
-  <div class="transparencyLayer" >
-    Causeathon
-  </div>
+<div class="transparencyLayer" >
+  Causeathon
 </div>
 
 
 <div class="container MainOuter">
+  <div class="row" ng-if="image.show">
+    <img ng-src="{{image.src}}" alt="img" class="EventBannerImage">
+  </div>
   <div class="row">
     <div class="col-md-offset-1 col-md-10">
       <ul class="nav nav-tabs nav-justified tabSelector">
@@ -69,10 +70,10 @@
 
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
 <script src="scripts/app.js"></script>
+<script src="scripts/controllers/index.js"></script>
+<script src="scripts/controllers/event.js"></script>
 <script src="scripts/controllers/organiser.js"></script>
 <script src="scripts/controllers/buy.js"></script>
-<script src="scripts/controllers/rootpage.js"></script>
-<script src="scripts/controllers/event.js"></script>
 <!-- endbuild -->
 
 

@@ -34,20 +34,19 @@ body {
   padding-top: 3px;
 }
 
-.backgroundEventImage{
-  height: 200px;
-}
-
 .transparencyLayer{
-  height: 200px;
-  background-color: rgba(0, 0, 0, 0.8);
+  background: url("../images/headerbg.png");
+  background-size:cover;
   color: #f7f7f7;
-  font-family: sans-serif;
+  background-color: #372949;
+  font-family: "Segoe UI", "Segoe UI Light", "Segoe Script", "Segoe Print";
   text-align: center;
-  padding-top: 80px;
+  padding: 15px;
+  padding: 15px;
   align-content: center;
-  font-weight: 700;
-  font-size: 35px;
+  font-size: 29px;
+  font-weight: lighter;
+  z-index: 19;
 }
 
 .MainOuter{
@@ -87,9 +86,16 @@ body {
   background-color: #2E608C;
   color: #FFFFFF;
   text-align: center;
+  overflow-wrap: break-word;
 }
 
 .dataCell, .dataCell tr td{
   text-align: center;
   font-weight: 600;
+  overflow-wrap: break-word;
+}
+
+.EventBannerImage{
+  width: 100%;
+  margin-bottom: 20px;
 }

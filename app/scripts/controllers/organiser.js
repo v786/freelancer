@@ -8,10 +8,15 @@
  * Controller of the frApp
  */
 angular.module('frApp')
-  .controller('OrganiserCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('OrganiserCtrl', function ($scope) {
+    $scope.organiser = {};
+
+    /* Debug */
+    $scope.organiser = {
+      manager : 'Mandar Varadkar',
+      location : 'Jogeshwari east',
+      phone : '9869460225',
+      email : 'mandar.varadkar@gmail.com'
+    };
+
   });

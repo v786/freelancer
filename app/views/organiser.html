@@ -1,17 +1,17 @@
-<div style="padding: 5%;">
+<div style="padding: 5%;" ng-controller="OrganiserCtrl">
   <div class="row" >
     <div class="col-md-offset-1 col-md-10 showBorder">
       <i class="fa fa-user"></i>
-      <span class="eventText">Mandar Varadkar</span>
+      <span class="eventText">{{organiser.manager}}</span>
       <hr class="blackRule">
       <i class="fa  fa-location-arrow"></i>
-      <span class="eventText"><em>Jogeshwari east</em></span>
+      <span class="eventText"><em>{{organiser.location}}</em></span>
       <hr class="blackRule">
       <i class="fa fa-phone"></i>
-      <span class="eventText">9869460225 </span>
+      <span class="eventText">{{organiser.phone}} </span>
       <br>
       <i class="fa fa-envelope"></i>
-      <span class="eventText">mandar.varadkar@gmail.com</span>
+      <span class="eventText">{{organiser.email}}</span>
     </div>
   </div>
 </div>
