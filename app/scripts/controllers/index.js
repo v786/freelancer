@@ -8,15 +8,17 @@
  * Controller of the frApp
  */
 angular.module('frApp')
-  .controller('IndexCtrl', function ($scope) {
+  .controller('IndexCtrl', function ($scope, getJsonFromServer) {
     $scope.image = {};
 
-    /* Debug */
-    $scope.image = {
-      show : true,
-      src : 'images/demoBG.jpeg'
-    };
-
     //production use some method like $http ;
+    getJsonFromServer.success(function(data){
+      $scope.image = {
+        show : (function(){
+          return data.programHeaderImage ? true : false;
+        })(),
+        src : data.programHeaderImage
+      };
+    })
 
   });

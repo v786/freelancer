@@ -11,6 +11,7 @@
 angular
   .module('frApp', ['ngRoute', 'ngMap'])
   .config(function ($routeProvider) {
+
     $routeProvider
       .when('/event', {
         templateUrl: 'views/event.html',
