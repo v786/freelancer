@@ -38,7 +38,7 @@ angular.module('frApp')
 
     $scope.updateTotalCostOnMobileView = function(){
       $scope.tickets.category.forEach(function(ele){
-        if (ele.type == $scope.mobileForm.selectCategory){
+        if (ele.type === $scope.mobileForm.selectCategory){
           ele.tckt = $scope.mobileForm.selectQuantity || 0;
         }
       });
@@ -48,6 +48,6 @@ angular.module('frApp')
     $scope.setMobileViewDataStructuresToZero = function(){
       $scope.mobileForm.selectCategory = '0' ;
       $scope.mobileForm.selectQuantity = '0' ;
-    }
+    };
 
   });

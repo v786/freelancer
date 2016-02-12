@@ -28,14 +28,25 @@
   </a>
 </div>
 
-<div class="transparencyLayer" >
-  Causeathon
-</div>
-
-
 <div class="container MainOuter">
-  <div class="row" ng-if="image.show">
-    <img ng-src="{{image.src}}" alt="img" class="EventBannerImage">
+  <div class="row">
+    <div class="col-md-offset-1 col-md-10">
+      <img ng-src="{{image.src}}" alt="img" class="EventBannerImage" ng-if="image.show">
+      <div class="transparencyLayer FirstBannerText" ng-if="image.show">
+        <span class="bannerText">{{eventName}}</span>
+      </div>
+      <div class="transparencyLayer" ng-if="image.show">
+        <span class="bannerTextSmall" ng-controller="OrganiserCtrl">Organised by {{organiser.manager}}</span>
+      </div>
+      <!-- redundancy to show different Background if no image is present -->
+      <div class="transForNoBgImage" ng-if="!image.show">
+        <span class="bannerText">{{eventName}}</span>
+      </div>
+      <div class="transForNoBgImage" ng-if="!image.show">
+        <span class="bannerTextSmall" ng-controller="OrganiserCtrl">Organised by {{organiser.manager}}</span>
+      </div>
+      <!--  redundancy end  -->
+    </div>
   </div>
   <div class="row">
     <div class="col-md-offset-1 col-md-10">

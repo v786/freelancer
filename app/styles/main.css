@@ -35,16 +35,40 @@ body {
 }
 
 .transparencyLayer{
-  background: url("../images/headerbg.png");
-  background-size:cover;
-  color: #f7f7f7;
-  background-color: #372949;
-  font-family: "Segoe UI", "Segoe UI Light", "Segoe Script", "Segoe Print";
+  /*background: url("../images/headerbg.png");*/
+  color: #ffffff;
+  opacity: 0.6;
+  background-color: #000;
+  width: 100%;
+  background-size:100% auto;
   text-align: center;
-  padding: 15px;
-  padding: 15px;
-  align-content: center;
-  font-size: 29px;
+  float: none;
+}
+
+.transForNoBgImage{
+  background: url("../images/headerbg.png");
+  color: #ffffff;
+  opacity: 1;
+  background-color: #AE96C3;
+  width: 100%;
+  background-size:100% auto;
+  text-align: center;
+  float: none;
+}
+
+.FirstBannerText{
+  margin-top: -10em;
+}
+
+.bannerText{
+  font-family: "Segoe UI", "Segoe UI Light", "Segoe Script", "Segoe Print";
+  font-size: 4em;
+  font-weight: lighter;
+  z-index: 19;
+}
+.bannerTextSmall{
+  font-family: "Segoe UI", "Segoe UI Light", "Segoe Script", "Segoe Print";
+  font-size: 2em;
   font-weight: lighter;
   z-index: 19;
 }
@@ -129,3 +153,4 @@ body {
   z-index: 1;
   position: relative;
 }
+
