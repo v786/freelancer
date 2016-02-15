@@ -10,6 +10,7 @@
   <!-- bower:css -->
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css">
+  <link rel="stylesheet" href="bower_components/angular-responsive-tables/release/angular-responsive-tables.css">
   <!-- endbower -->
   <!-- endbuild -->
   <!-- build:css(.tmp) styles/main.css -->
@@ -24,7 +25,7 @@
 <!-- Add your site or application content here -->
 <div class="bannerWithSiteLogo">
   <a href="http://www.joinmyevent.com/" target="_blank">
-    <img ng-src="images/joinmyeventLogo.png">
+    <img ng-src="images/joinmyeventLogo.png" class="img-responsive">
   </a>
 </div>
 
@@ -35,15 +36,9 @@
       <div class="transparencyLayer FirstBannerText" ng-if="image.show">
         <span class="bannerText">{{eventName}}</span>
       </div>
-      <div class="transparencyLayer" ng-if="image.show">
-        <span class="bannerTextSmall" ng-controller="OrganiserCtrl">Organised by {{organiser.manager}}</span>
-      </div>
       <!-- redundancy to show different Background if no image is present -->
       <div class="transForNoBgImage" ng-if="!image.show">
         <span class="bannerText">{{eventName}}</span>
-      </div>
-      <div class="transForNoBgImage" ng-if="!image.show">
-        <span class="bannerTextSmall" ng-controller="OrganiserCtrl">Organised by {{organiser.manager}}</span>
       </div>
       <!--  redundancy end  -->
     </div>
@@ -73,9 +68,8 @@
 <!-- bower:js -->
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
-<script src="bower_components/jquery/dist/jquery.js"></script>
-<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
 <script src="bower_components/ngmap/build/scripts/ng-map.js"></script>
+<script src="bower_components/angular-responsive-tables/release/angular-responsive-tables.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 

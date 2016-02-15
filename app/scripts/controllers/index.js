@@ -12,7 +12,7 @@ angular.module('frApp')
     $scope.image = {};
 
     //production use some method like $http ;
-    getJsonFromServer.success(function(data){
+    getJsonFromServer.then(function(data){
 
   /**************************************  IMPORTANT  *********************************************
   *                                                                                               *
@@ -25,8 +25,6 @@ angular.module('frApp')
       if(data.response.programHeaderImage){
         data.response.programHeaderImage = data.response.programHeaderImage.replace(/\\/g, "/");
       }
-
-      $log.debug(data.response);
 
       $scope.eventName = data.response.programName;
       $scope.image = {

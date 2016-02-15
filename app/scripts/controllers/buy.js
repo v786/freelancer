@@ -8,7 +8,7 @@
  * Controller of the frApp
  */
 angular.module('frApp')
-  .controller('BuyCtrl', function ($scope) {
+  .controller('BuyCtrl', function ($scope, getJsonFromServer) {
     $scope.tickets = {} ;
     $scope.tickets = {
       category : [
@@ -23,8 +23,22 @@ angular.module('frApp')
       sellEndDate : 'December 25, 2016'
     };
 
-    $scope.tickets.category.forEach(function(e){
-      e.tckt = '0';
+    getJsonFromServer.then(function(data){
+      $scope.tickets = {
+        category : [
+          { type : '7 km' , price: 400.0 },
+          { type : 'General' , price: 200.0 },
+          { type : 'Children' , price: 0.0 },
+          { type : 'Child With Autism' , price: 0.0 }
+        ],
+        totalTicketSelected : 0,
+        netCost : 0 ,
+        sellStartDate : data.response.programStartDatetime,
+        sellEndDate : data.response.programEndDatetime
+      };
+      $scope.tickets.category.forEach(function(e){
+        e.tckt = '0';
+      });
     });
 
     $scope.updateTotalCost = function(){
@@ -36,18 +50,5 @@ angular.module('frApp')
       });
     };
 
-    $scope.updateTotalCostOnMobileView = function(){
-      $scope.tickets.category.forEach(function(ele){
-        if (ele.type === $scope.mobileForm.selectCategory){
-          ele.tckt = $scope.mobileForm.selectQuantity || 0;
-        }
-      });
-      $scope.updateTotalCost();
-    };
-
-    $scope.setMobileViewDataStructuresToZero = function(){
-      $scope.mobileForm.selectCategory = '0' ;
-      $scope.mobileForm.selectQuantity = '0' ;
-    };
 
   });

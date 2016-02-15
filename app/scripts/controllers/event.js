@@ -12,7 +12,7 @@ angular.module('frApp')
     $scope.event = {};
 
     //production use some method like $http ;
-    getJsonFromServer.success(function(data){
+    getJsonFromServer.then(function(data){
       $scope.event = {
         eventDate: data.response.programDisplayDate,
         eventTime: data.response.programDisplayTime,
