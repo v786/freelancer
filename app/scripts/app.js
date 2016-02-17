@@ -28,6 +28,11 @@ angular
         controller: 'BuyCtrl',
         controllerAs: 'buy'
       })
+      .when('/IAmLost', {
+        templateUrl: 'views/iamlost.html',
+        controller: 'IamlostCtrl',
+        controllerAs: 'IAmLost'
+      })
       .otherwise({
         redirectTo: '/event'
       });
