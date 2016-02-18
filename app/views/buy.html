@@ -13,15 +13,16 @@
 
         <tbody class="dataCell">
         <tr ng-repeat="cat in tickets.category">
-          <td>{{cat.type}}</td>
-          <td>{{cat.price}}</td>
-          <td>
-            <select ng-model="cat.tckt" ng-change="updateTotalCost();">
+          <td ng-if="cat.ShowThisTicket">{{cat.ticketName}}</td>
+          <td ng-if="cat.ShowThisTicket">{{cat.ticketPrice}}</td>
+          <td ng-if="cat.ShowThisTicket">
+            <select ng-model="cat.ticketsSelectedWithinCategory" ng-change="updateTotalCost();" >
               <option value="0">select</option>
-              <option ng-repeat="i in [1,2,3,4,5,6,7,8,9]" value="{{i}}">{{i}}</option>
+              <option ng-repeat="i in cat.selectOptionArray" value="{{i}}">{{i}}</option>
             </select>
           </td>
-          <td>{{cat.tckt * cat.price}}</td>
+          <td ng-if="cat.ShowThisTicket">{{cat.ticketsSelectedWithinCategory * cat.ticketPrice}}</td>
+          <td ng-if="!cat.ShowThisTicket" colspan="4">{{cat.TicketSaleStatus}}</td>
         </tr>
         </tbody>
         <tfoot class="colouredHead">

@@ -8,7 +8,7 @@
  * Controller of the frApp
  */
 angular.module('frApp')
-  .controller('IndexCtrl', function ($scope, getJsonFromServer, $log) {
+  .controller('IndexCtrl', function ($scope, getJsonFromServer) {
     $scope.image = {};
 
     //production use some method like $http ;
@@ -16,7 +16,7 @@ angular.module('frApp')
 
   /**************************************  IMPORTANT  *********************************************
   *                                                                                               *
-  * BUG : data.response.image contains both foreward and backward slashes which are recognised as *
+  * BUG : data.response.image contains both forward and backward slashes which are recognised as *
   *       'escape sequence' by angular when added as dynamic source.                              *
   * FIX : coverting all backward slash to forward slash                                           *
   *                                                                                               *

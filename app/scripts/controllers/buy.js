@@ -9,44 +9,71 @@
  */
 angular.module('frApp')
   .controller('BuyCtrl', function ($scope, getJsonFromServer) {
-    $scope.tickets = {} ;
+
     $scope.tickets = {
-      category : [
-        { type : '7 km' , price: 400.0 },
-        { type : 'General' , price: 200.0 },
-        { type : 'Children' , price: 0.0 },
-        { type : 'Child With Autism' , price: 0.0 }
-      ],
-      totalTicketSelected : 0,
-      netCost : 0 ,
-      sellStartDate : 'Jan 23,2015',
-      sellEndDate : 'December 25, 2016'
+      category : [],
+      totalTicketSelected : 0
     };
 
+    /*
+     ageFrom: 20
+     ageTo: 55
+     discount: false
+     discountMaster: Object
+     discountPrice: 0
+     isDeleted: 0
+     maxTicketsPerTransaction: 9
+     minTicketsPerTransaction: 1
+     noOfTickets: 0
+     price: 0
+     refundable: false
+     salesEndDate: 1459362600000
+     salesStartDate: 1439749800000
+     tdrId: 1
+     ticketDates: Array[4]
+     ticketId: 1131
+     ticketName: "7 Km"
+     ticketPrice: 400
+     ticketSelected: false
+     totalTickets: 500
+     */
+
     getJsonFromServer.then(function(data){
-      $scope.tickets = {
-        category : [
-          { type : '7 km' , price: 400.0 },
-          { type : 'General' , price: 200.0 },
-          { type : 'Children' , price: 0.0 },
-          { type : 'Child With Autism' , price: 0.0 }
-        ],
-        totalTicketSelected : 0,
-        netCost : 0 ,
-        sellStartDate : data.response.programStartDatetime,
-        sellEndDate : data.response.programEndDatetime
-      };
-      $scope.tickets.category.forEach(function(e){
-        e.tckt = '0';
+
+      data.response.ticketDetails.forEach(function(ele){
+        $scope.tickets.category.push(ele);
       });
+
+      $scope.tickets.category.forEach(function(e){
+        e.ticketsSelectedWithinCategory = '0';
+        e.selectOptionArray = []; // sets up array for "maxTicketsPerTransaction" to "minTicketsPerTransaction"
+        for(var z = e.minTicketsPerTransaction; z <= e.maxTicketsPerTransaction; z++){
+          e.selectOptionArray.push(z);
+        }
+        e.currentDatetime = Date.now();
+        e.TicketSaleStatus = (function(){
+          if(e.currentDatetime < e.salesStartDate){
+            e.ShowThisTicket = false;
+            return "Sale Not Started" ;
+          }else if(e.currentDatetime > e.salesEndDate){
+            e.ShowThisTicket = false;
+            return "Sale has ended" ;
+          }else {
+            e.ShowThisTicket = true;
+            return "Sale is active" ;
+          }
+        })();
+      });
+
+      console.log($scope.tickets);
     });
 
     $scope.updateTotalCost = function(){
       $scope.tickets.netCost = 0 ;
       $scope.tickets.totalTicketSelected = 0;
       $scope.tickets.category.forEach(function(e){
-        $scope.tickets.netCost += parseInt(e.tckt) * parseInt(e.price) ;
-        $scope.tickets.totalTicketSelected += parseInt(e.tckt) ;
+        $scope.tickets.netCost += parseInt(e.ticketsSelectedWithinCategory) * parseInt(e.ticketPrice) ;
+        $scope.tickets.totalTicketSelected += parseInt(e.ticketsSelectedWithinCategory) ;
       });
     };
 
