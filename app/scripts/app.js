@@ -33,6 +33,11 @@ angular
         controller: 'IamlostCtrl',
         controllerAs: 'IAmLost'
       })
+      .when('/RegistrationDetails', {
+        templateUrl: 'views/registrationdetails.html',
+        controller: 'RegistrationDetailsCtrl',
+        controllerAs: 'RegistrationDetails'
+      })
       .otherwise({
         redirectTo: '/event'
       });

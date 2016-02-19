@@ -8,35 +8,12 @@
  * Controller of the frApp
  */
 angular.module('frApp')
-  .controller('BuyCtrl', function ($scope, getJsonFromServer) {
+  .controller('BuyCtrl', function ($scope, getJsonFromServer, $http) {
 
     $scope.tickets = {
       category : [],
       totalTicketSelected : 0
     };
-
-    /*
-     ageFrom: 20
-     ageTo: 55
-     discount: false
-     discountMaster: Object
-     discountPrice: 0
-     isDeleted: 0
-     maxTicketsPerTransaction: 9
-     minTicketsPerTransaction: 1
-     noOfTickets: 0
-     price: 0
-     refundable: false
-     salesEndDate: 1459362600000
-     salesStartDate: 1439749800000
-     tdrId: 1
-     ticketDates: Array[4]
-     ticketId: 1131
-     ticketName: "7 Km"
-     ticketPrice: 400
-     ticketSelected: false
-     totalTickets: 500
-     */
 
     getJsonFromServer.then(function(data){
 
@@ -64,8 +41,6 @@ angular.module('frApp')
           }
         })();
       });
-
-      console.log($scope.tickets);
     });
 
     $scope.updateTotalCost = function(){
@@ -75,6 +50,28 @@ angular.module('frApp')
         $scope.tickets.netCost += parseInt(e.ticketsSelectedWithinCategory) * parseInt(e.ticketPrice) ;
         $scope.tickets.totalTicketSelected += parseInt(e.ticketsSelectedWithinCategory) ;
       });
+    };
+
+    $scope.proceedToNextStep = function(email){
+      if(email){
+        var ticketArray = $scope.tickets.category;
+        ticketArray.forEach(function(e){
+          e.noOfTickets = e.ticketsSelectedWithinCategory ;
+          e.ticketSelected = e.noOfTickets > 0;
+        });
+        $http({
+          url : 'http://test.joinmyevent.com:8080/ems/ws/registration/'+email,
+          method : 'POST',
+          data : ticketArray
+        }).success(function(data){
+          console.log(data);
+        }).error(function(e){
+          console.log(e);
+        });
+      }else {
+        alert("Enter valid email id !");
+      }
+
     };
 
 

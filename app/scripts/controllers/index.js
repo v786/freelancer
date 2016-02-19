@@ -8,7 +8,7 @@
  * Controller of the frApp
  */
 angular.module('frApp')
-  .controller('IndexCtrl', function ($scope, getJsonFromServer) {
+  .controller('IndexCtrl', function ($scope, getJsonFromServer, $rootScope) {
     $scope.image = {};
 
     //production use some method like $http ;
@@ -34,5 +34,7 @@ angular.module('frApp')
         src : data.response.programHeaderImage
       };
     });
+
+    $rootScope.NavigationBar = 'topEnabled';
 
   });

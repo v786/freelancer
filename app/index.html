@@ -30,7 +30,7 @@
 </div>
 
 <div class="container MainOuter">
-  <div class="row">
+  <div class="row" ng-if="NavigationBar === 'topEnabled'">
     <div class="col-md-offset-1 col-md-10">
       <img ng-src="{{image.src}}" alt="img" class="EventBannerImage" ng-if="image.show">
       <div class="transparencyLayer FirstBannerText" ng-if="image.show">
@@ -43,7 +43,7 @@
       <!--  redundancy end  -->
     </div>
   </div>
-  <div class="row">
+  <div class="row" ng-if="NavigationBar === 'topEnabled'">
     <div class="col-md-offset-1 col-md-10">
       <ul class="nav nav-tabs nav-justified tabSelector">
         <li role="presentation" ng-class="{active:tab ==='event'}">
@@ -81,6 +81,8 @@
 <script src="scripts/controllers/buy.js"></script>
 <script src="scripts/services/getjsonfromserver.js"></script>
 <script src="scripts/controllers/iamlost.js"></script>
+<script src="scripts/controllers/details.js"></script>
+<script src="scripts/controllers/registrationdetails.js"></script>
 <!-- endbuild -->
 
 
