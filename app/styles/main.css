@@ -132,3 +132,37 @@ body {
   font-weight: 600;
   overflow-wrap: break-word;
 }
+
+.nav-sidebar{
+  border: 1px solid #00d6b2;
+}
+
+.nav-sidebar-title{
+  background-color: #00ebc5;
+  padding-left: 5px;
+}
+
+.nav-pills li a{
+  border: 1px solid mintcream;
+  background-color: #9acfea;
+  color: black;
+}
+.nav-pills li a:hover{
+  border: 1px solid mintcream;
+  background-color: #86b6cd;
+  color: black;
+}
+
+.floatRight{
+  float: right;
+}
+
+.RegCenterText{
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.disabled{
+  background-color: #bfbfbf;
+  color: black;
+}

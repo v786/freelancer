@@ -8,7 +8,7 @@
  * Controller of the frApp
  */
 angular.module('frApp')
-  .controller('BuyCtrl', function ($scope, getJsonFromServer, $http) {
+  .controller('BuyCtrl', function ($scope, getJsonFromServer, $http, $location, $rootScope) {
 
     $scope.tickets = {
       category : [],
@@ -64,7 +64,9 @@ angular.module('frApp')
           method : 'POST',
           data : ticketArray
         }).success(function(data){
+          $rootScope.InstanceTicketJson = data;
           console.log(data);
+          $location.path('RegistrationDetails');
         }).error(function(e){
           console.log(e);
         });
