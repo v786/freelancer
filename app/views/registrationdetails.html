@@ -13,6 +13,7 @@
           </ul>
         </div>
       </div>
+      <!-- participant form start -->
       <div class="row" style="margin-top: 25px;">
         <div class="col-md-3 sidebar">
           <ul class="nav nav-sidebar" ng-repeat="TicketGroup in tickets">
@@ -150,6 +151,100 @@
 
         </div>
       </div>
+      <!-- participant form stop -->
+
+      <!-- billing form start -->
+      <div>
+        <hr>
+        <form id="BillingForm">
+          <div class="form-group">
+            <label for="FirstName">First Name</label>
+            <input type="text" class="form-control" ng-model="billing.FirstName" placeholder="First Name">
+          </div>
+          <div class="form-group">
+            <label for="LastName">Last Name</label>
+            <input type="text" class="form-control" ng-model="billing.LastName" placeholder="Last Name">
+          </div>
+          <div class="form-group">
+            <label>Gender</label>
+            <div class="form-inline">
+              <div class="radio">
+                <label>
+                  <input type="radio" ng-model="billing.gender" value="male" >
+                  Male
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" ng-model="billing.gender" value="Female">
+                  Female
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="dob">Date Of Birth</label>
+            <input type="date" class="form-control" ng-model="billing.dob" placeholder="Date of Birth">
+          </div>
+
+          <div class="form-group">
+            <label for="Address">Address</label>
+            <textarea class="form-control" form="BillingForm" ng-model="billing.address" placeholder="Address"></textarea>
+          </div>
+
+          <div class="form-inline">
+            <div class="form-group">
+              <label for="zip">Pin Code</label>
+              <input type="text" class="form-control" ng-model="billing.zip" placeholder="zip">
+            </div>
+
+            <div class="form-group">
+              <label for="city">City</label>
+              <input type="text" class="form-control" ng-model="billing.city" placeholder="City">
+            </div>
+
+            <div class="form-group">
+              <label for="country">Country</label>
+              <select class="form-control" ng-model="billing.country">
+                <option value="india">India</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+          </div>
+
+          <div class="form-group">
+            <label for="mobile">Mobile</label>
+            <input type="text" class="form-control" ng-model="billing.mobile" placeholder="Mobile Number">
+          </div>
+
+          <div class="form-group">
+            <label for="EmailAddress">Email Address</label>
+            <input type="email" class="form-control" ng-model="billing.email" placeholder="Email Address">
+          </div>
+
+          <div class="form-group">
+            <label for="tShirtSize">T-shirt Size</label>
+            <select class="form-control" ng-model="billing.tShirt">
+              <option value="0">select</option>
+            </select>
+          </div>
+
+          <div class="checkbox">
+            <label>
+              <input type="checkbox"> I Agree to terms and conditions
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary" ng-if="Progress.isLast(Progress.current)"
+                  ng-click="Progress.NextPhase();">Proceed</button>
+          <hr>
+        </form>
+      </div>
+      <!-- billing form stop -->
+
+      <!-- Review start -->
+      <!-- Review stop -->
     </div>
   </div>
 </div>
