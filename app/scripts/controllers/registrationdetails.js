@@ -218,6 +218,12 @@ angular.module('frApp')
 
     /*Views, Participation, payment, confirm*/
     $scope.CurrentVIEW = 0 ;
+    $scope.setCurrentView = function(v){
+      $scope.CurrentVIEW = v ;
+    };
+
+    $scope.ParticipantDetails = [];
+    $scope.BillingUserDetails = {};
 
 
     var parseInputField = function(k){
@@ -242,7 +248,7 @@ angular.module('frApp')
                 options: (function(){
                   var k = [];
                   f.participantSpecimenId.participantSpecimenDetailsList.forEach(function(e){
-                    k.push({name:fieldValue, value:fieldValue});
+                    k.push({name: e.fieldValue, value: e.fieldValue});
                   });
                   return k;
                 })() || [{name:'male',value:'male'},{name:'female',value:'female'}]
@@ -334,9 +340,109 @@ angular.module('frApp')
           this.MarkerIndices.push(this.current);
         }
         $scope.CurrentVIEW = 1;
+        $scope.ParticipantDetails = this.UserInformation.slice();
         console.log($scope.Progress);
       }
     };
 
     $scope.ProgressTicketIndex = getCurrentTicketIndex;
+
+
+    /*Payment Details */
+
+
+    $scope.payment = {
+      Fields : [
+        {
+          key: 'FirstName',
+          type: 'input',
+          templateOptions: {
+            type: 'text',
+            label: 'First Name',
+            placeholder: 'First Name'
+          }
+        },
+        {
+          key: 'LastName',
+          type: 'input',
+          templateOptions: {
+            type: 'text',
+            label: 'Last Name',
+            placeholder: 'Last Name'
+          }
+        },
+        {
+          key: 'Gender' ,
+          type: 'radio',
+          templateOptions: {
+            label: 'Gender',
+            options: [{name:'male',value:'male'},{name:'female',value:'female'}]
+          }
+        },
+        {
+          key: 'DateOfBirth',
+          type: 'input',
+          templateOptions: {
+            type: 'date',
+            label: 'Date Of Birth'
+          }
+        },
+        {
+          key: 'Address',
+          type: 'textarea',
+          templateOptions: {
+            type: 'textarea',
+            label: 'Address'
+          }
+        },
+        {
+          key: 'zip',
+          type: 'input',
+          templateOptions: {
+            type: 'text',
+            label: 'PinCode',
+            placeholder: 'Enter Pin Code'
+          }
+        },
+        {
+          key: 'City',
+          type: 'input',
+          templateOptions: {
+            type: 'text',
+            label: 'City',
+            placeholder: 'City'
+          }
+        },
+        {
+          key: 'Country',
+          type: 'select',
+          templateOptions: {
+            label: 'Country',
+            options: [{"name": "India","value":"india"},{"name": "other","value":"other"}]
+          }
+        },
+        {
+          key: 'Mobile',
+          type: 'input',
+          templateOptions: {
+            type: 'text',
+            label: 'mobile',
+            placeholder: 'Enter ten digit mobile number'
+          }
+        },
+        {
+          key: 'checked',
+          type: 'checkbox',
+          templateOptions: {
+            label: 'I accept All terms and Conditions (*)'
+          }
+        }
+      ],
+      UserDetails : {},
+      submit : function(f){
+        $scope.BillingUserDetails = Object.assign({}, f);
+        console.log(f);
+        $scope.CurrentVIEW = 2;
+      }
+    }
   });

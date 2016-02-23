@@ -7,14 +7,17 @@
       <div class="row">
         <div class="col-md-12">
           <ul class="nav nav-pills nav-justified">
-            <li role="presentation" class="active"><a href="#">Participants Registrations</a></li>
-            <li role="presentation"><a href="#">Buyer Information</a></li>
-            <li role="presentation"><a href="#">Verify Registration</a></li>
+            <li role="presentation" ng-class="{'active':CurrentVIEW === 0}" ng-click="setCurrentView(0)">
+              <a>Participants Registrations</a></li>
+            <li role="presentation" ng-class="{'active':CurrentVIEW === 1}" ng-click="setCurrentView(1)">
+              <a>Buyer Information</a></li>
+            <li role="presentation" ng-class="{'active':CurrentVIEW === 2}" ng-click="setCurrentView(2)">
+              <a>Verify Registration</a></li>
           </ul>
         </div>
       </div>
       <!-- participant form start -->
-      <div class="row" style="margin-top: 25px;">
+      <div class="row" style="margin-top: 25px;" ng-if="CurrentVIEW === 0">
         <div class="col-md-3 sidebar">
           <ul class="nav nav-sidebar" ng-repeat="TicketGroup in tickets">
             <li class="nav-sidebar-title">Type : {{TicketGroup.ticketName}}</li>
@@ -29,7 +32,7 @@
           </ul>
         </div>
         <div class="col-md-9">
-          <form class="form-horizontal form-inline">
+          <form class="form-horizontal form-inline" ng-if="CurrentVIEW === 0">
 
             <label>Copy Contents from</label>
             <select class="form-control" ng-change="Progress.copyFrom()" ng-model="Progress.copyFromTicketNumber"
@@ -56,7 +59,7 @@
           </form>
 
           <!-- dynamic form start -->
-          <div ng-repeat="ticket in tickets">
+          <div ng-repeat="ticket in tickets" ng-if="CurrentVIEW === 0">
             <formly-form model="ticket.vm.user" fields="ticket.vm.userFields" ng-if="ProgressTicketIndex() == $index">
               <button type="submit" class="btn btn-primary" ng-if="!Progress.isLast(Progress.current)"
                       ng-click="Progress.CheckAndProceedToNextStep();">Save Details for this Participant</button>
@@ -65,7 +68,7 @@
               <hr>
             </formly-form>
             <!-- dynamic form end -->
-          </div>
+          </div >
 
 
         </div>
@@ -73,97 +76,48 @@
       <!-- participant form stop -->
 
       <!-- billing form start -->
-      <!--
-      <div>
-        <hr>
-        <form id="BillingForm">
-          <div class="form-group">
-            <label for="FirstName">First Name</label>
-            <input type="text" class="form-control" ng-model="billing.FirstName" placeholder="First Name">
-          </div>
-          <div class="form-group">
-            <label for="LastName">Last Name</label>
-            <input type="text" class="form-control" ng-model="billing.LastName" placeholder="Last Name">
-          </div>
-          <div class="form-group">
-            <label>Gender</label>
-            <div class="form-inline">
-              <div class="radio">
-                <label>
-                  <input type="radio" ng-model="billing.gender" value="male" >
-                  Male
-                </label>
-              </div>
-              <div class="radio">
-                <label>
-                  <input type="radio" ng-model="billing.gender" value="Female">
-                  Female
-                </label>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="dob">Date Of Birth</label>
-            <input type="date" class="form-control" ng-model="billing.dob" placeholder="Date of Birth">
-          </div>
-
-          <div class="form-group">
-            <label for="Address">Address</label>
-            <textarea class="form-control" form="BillingForm" ng-model="billing.address" placeholder="Address"></textarea>
-          </div>
-
-          <div class="form-inline">
-            <div class="form-group">
-              <label for="zip">Pin Code</label>
-              <input type="text" class="form-control" ng-model="billing.zip" placeholder="zip">
-            </div>
-
-            <div class="form-group">
-              <label for="city">City</label>
-              <input type="text" class="form-control" ng-model="billing.city" placeholder="City">
-            </div>
-
-            <div class="form-group">
-              <label for="country">Country</label>
-              <select class="form-control" ng-model="billing.country">
-                <option value="india">India</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-
-          </div>
-
-          <div class="form-group">
-            <label for="mobile">Mobile</label>
-            <input type="text" class="form-control" ng-model="billing.mobile" placeholder="Mobile Number">
-          </div>
-
-          <div class="form-group">
-            <label for="EmailAddress">Email Address</label>
-            <input type="email" class="form-control" ng-model="billing.email" placeholder="Email Address">
-          </div>
-
-          <div class="form-group">
-            <label for="tShirtSize">T-shirt Size</label>
-            <select class="form-control" ng-model="billing.tShirt">
-              <option value="0">select</option>
-            </select>
-          </div>
-
-          <div class="checkbox">
-            <label>
-              <input type="checkbox"> I Agree to terms and conditions
-            </label>
-          </div>
-          <button type="submit" class="btn btn-primary" ng-if="Progress.isLast(Progress.current)"
-                  ng-click="Progress.NextPhase();">Proceed</button>
+      <div ng-if="CurrentVIEW === 1" class="col-md-offset-2 md-col-8">
+        <h3>Fill In Billing details</h3>
+        <formly-form model="payment.UserDetails" fields="payment.Fields">
+          <button type="submit" class="btn btn-primary" ng-click="payment.submit(payment.UserDetails);">
+            Proceed to fill Billing Details
+          </button>
           <hr>
-        </form>
+        </formly-form>
       </div>
       <!-- billing form stop -->
 
       <!-- Review start -->
+      <div ng-if="CurrentVIEW === 2">
+        <h2>Please Review your Data..</h2>
+        <h3>Participant Details</h3>
+        <table class="table table-bordered table-hover" wt-responsive-table>
+          <thead>
+            <tr>
+              <th ng-repeat="(key,value) in ParticipantDetails[0]">{{key}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="Participant in ParticipantDetails">
+              <td ng-repeat="(k,v) in Participant">{{v}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <hr>
+        <h3>Billing Details</h3>
+        <table class="table table-bordered table-hover" wt-responsive-table>
+          <thead>
+          <tr>
+            <th ng-repeat="(key,value) in BillingUserDetails">{{key}}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td ng-repeat="(k,v) in BillingUserDetails">{{v}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
       <!-- Review stop -->
     </div>
   </div>
