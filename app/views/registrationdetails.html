@@ -54,8 +54,8 @@
 
           </form>
 
-          <!-- Main form -->
-          <div>
+          <!-- Static form -->
+<!--          <div>
             <hr>
             <form id="UserRegForm">
               <div class="form-group">
@@ -145,8 +145,20 @@
               <hr>
             </form>
           </div>
+-->
+          <!-- static form  End -->
 
-          <!-- From End -->
+          <!-- dynamic form start -->
+          <div ng-repeat="ticket in tickets">
+            <formly-form model="ticket.vm.user" fields="ticket.vm.userFields" ng-if="ProgressTicketIndex() == $index">
+              <button type="submit" class="btn btn-primary" ng-if="!Progress.isLast(Progress.current)"
+                      ng-click="Progress.CheckAndProceedToNextStep();">Save Details for this Participant</button>
+              <button type="submit" class="btn btn-primary" ng-if="Progress.isLast(Progress.current)"
+                      ng-click="Progress.NextPhase();">Proceed to fill Billing Details</button>
+            </formly-form>
+            <!-- dynamic form end -->
+          </div>
+
 
         </div>
       </div>
