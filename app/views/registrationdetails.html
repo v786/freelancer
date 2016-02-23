@@ -55,100 +55,6 @@
 
           </form>
 
-          <!-- Static form -->
-<!--          <div>
-            <hr>
-            <form id="UserRegForm">
-              <div class="form-group">
-                <label for="FirstName">First Name</label>
-                <input type="text" class="form-control" id="FirstName" ng-model="formData.FirstName" placeholder="First Name">
-              </div>
-              <div class="form-group">
-                <label for="LastName">Last Name</label>
-                <input type="text" class="form-control" id="LastName" ng-model="formData.LastName" placeholder="Last Name">
-              </div>
-              <div class="form-group">
-                <label>Gender</label>
-                <div class="form-inline">
-                  <div class="radio">
-                    <label>
-                      <input type="radio" ng-model="formData.gender" id="optionsRadioMale" value="male" ng-init="'male'">
-                      Male
-                    </label>
-                  </div>
-                  <div class="radio">
-                    <label>
-                      <input type="radio" ng-model="formData.gender" id="optionsRadioFemale" value="Female">
-                      Female
-                    </label>
-                  </div>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="dob">Date Of Birth</label>
-                <input type="date" class="form-control" id="dob" ng-model="formData.dob" placeholder="Date of Birth">
-              </div>
-
-              <div class="form-group">
-                <label for="Address">Address</label>
-                <textarea class="form-control" id="Address" form="UserRegForm" ng-model="formData.address" placeholder="Address"></textarea>
-              </div>
-
-              <div class="form-inline">
-                <div class="form-group">
-                  <label for="zip">Pin Code</label>
-                  <input type="text" class="form-control" id="zip" ng-model="formData.zip" placeholder="zip">
-                </div>
-
-                <div class="form-group">
-                  <label for="city">City</label>
-                  <input type="text" class="form-control" id="city" ng-model="formData.city" placeholder="City">
-                </div>
-
-                <div class="form-group">
-                  <label for="country">Country</label>
-                  <select class="form-control" id="country" ng-model="formData.country"
-                          ng-init="formData.country='india'">
-                    <option value="india">India</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-
-              </div>
-
-              <div class="form-group">
-                <label for="mobile">Mobile</label>
-                <input type="text" class="form-control" id="mobile" ng-model="formData.mobile" placeholder="Mobile Number">
-              </div>
-
-              <div class="form-group">
-                <label for="EmailAddress">Email Address</label>
-                <input type="email" class="form-control" id="EmailAddress" ng-model="formData.email" placeholder="Email Address">
-              </div>
-
-              <div class="form-group">
-                <label for="tShirtSize">T-shirt Size</label>
-                <select class="form-control" id="tShirtSize" ng-model="formData.tShirt" ng-init="formData.tShirt=0">
-                  <option value="0">select</option>
-                </select>
-              </div>
-
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox"> I Agree to terms and conditions
-                </label>
-              </div>
-              <button type="submit" class="btn btn-primary" ng-if="!Progress.isLast(Progress.current)"
-                      ng-click="Progress.CheckAndProceedToNextStep();">Save Details for this Participant</button>
-              <button type="submit" class="btn btn-primary" ng-if="Progress.isLast(Progress.current)"
-                      ng-click="Progress.NextPhase();">Proceed to fill Billing Details</button>
-              <hr>
-            </form>
-          </div>
--->
-          <!-- static form  End -->
-
           <!-- dynamic form start -->
           <div ng-repeat="ticket in tickets">
             <formly-form model="ticket.vm.user" fields="ticket.vm.userFields" ng-if="ProgressTicketIndex() == $index">
@@ -166,6 +72,7 @@
       <!-- participant form stop -->
 
       <!-- billing form start -->
+      <!--
       <div>
         <hr>
         <form id="BillingForm">
