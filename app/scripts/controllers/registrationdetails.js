@@ -25,20 +25,188 @@ angular.module('frApp')
         'discountMaster': {}, 'ticketId': 1131,
         'tdrId': 3,'noOfTickets': 2, 'price': 0,
         'discountPrice': 0, 'ticketSelected':true,
-        'isDeleted': 0
+        'isDeleted': 0,
+        "participantMasterCollection": [
+          {
+            "participantId": 2040,
+            "fieldName": "First Name",
+            "fieldType": "text_box",
+            "fieldRequired": true,
+            "modifiedOn": 1439774086453,
+            "modifiedBy": 36,
+            "participantSpecimenId": 1
+          },
+          {
+            "participantId": 2041,
+            "fieldName": "Last Name",
+            "fieldType": "text_box",
+            "fieldRequired": true,
+            "modifiedOn": 1439774086457,
+            "modifiedBy": 36,
+            "participantSpecimenId": 2
+          },
+          {
+            "participantId": 2042,
+            "fieldName": "Gender",
+            "fieldType": "radio_button",
+            "fieldRequired": true,
+            "modifiedOn": 1439774086457,
+            "modifiedBy": 36,
+            "participantSpecimenId": 3
+          },
+          {
+            "participantId": 2043,
+            "fieldName": "Date of Birth",
+            "fieldType": "date_picker",
+            "fieldRequired": true,
+            "modifiedOn": 1439774086457,
+            "modifiedBy": 36,
+            "participantSpecimenId": 4
+          },
+          {
+            "participantId": 2044,
+            "fieldName": "Address",
+            "fieldType": "text_box",
+            "fieldRequired": true,
+            "modifiedOn": 1439774086457,
+            "modifiedBy": 36,
+            "participantSpecimenId": 5
+          },
+          {
+            "participantId": 2045,
+            "fieldName": "Postal Code",
+            "fieldType": "text_box",
+            "fieldRequired": true,
+            "modifiedOn": 1439774086457,
+            "modifiedBy": 36,
+            "participantSpecimenId": 6
+          }
+        ]
       },{
         "ticketName":"Children","ageFrom":20,"ageTo":55,
         "ticketPrice":0.0,"discount":false,"refundable":false,
         "totalTickets":50,"discountMaster":{},
         "ticketId":1133,"tdrId":1,"noOfTickets":4,
         "price":0.0,"discountPrice":0.0,"ticketSelected":true,
-        "isDeleted":0
+        "isDeleted":0,
+        "participantMasterCollection": [
+          {
+            "participantId": 2040,
+            "fieldName": "First Name",
+            "fieldType": "text_box",
+            "fieldRequired": true,
+            "modifiedOn": 1439774086453,
+            "modifiedBy": 36,
+            "participantSpecimenId": 1
+          },
+          {
+            "participantId": 2041,
+            "fieldName": "Last Name",
+            "fieldType": "text_box",
+            "fieldRequired": true,
+            "modifiedOn": 1439774086457,
+            "modifiedBy": 36,
+            "participantSpecimenId": 2
+          },
+          {
+            "participantId": 2042,
+            "fieldName": "Gender",
+            "fieldType": "radio_button",
+            "fieldRequired": true,
+            "modifiedOn": 1439774086457,
+            "modifiedBy": 36,
+            "participantSpecimenId": 3
+          },
+          {
+            "participantId": 2043,
+            "fieldName": "Date of Birth",
+            "fieldType": "date_picker",
+            "fieldRequired": true,
+            "modifiedOn": 1439774086457,
+            "modifiedBy": 36,
+            "participantSpecimenId": 4
+          },
+          {
+            "participantId": 2044,
+            "fieldName": "Address",
+            "fieldType": "text_box",
+            "fieldRequired": true,
+            "modifiedOn": 1439774086457,
+            "modifiedBy": 36,
+            "participantSpecimenId": 5
+          },
+          {
+            "participantId": 2045,
+            "fieldName": "Postal Code",
+            "fieldType": "text_box",
+            "fieldRequired": true,
+            "modifiedOn": 1439774086457,
+            "modifiedBy": 36,
+            "participantSpecimenId": 6
+          }
+        ]
       },{
         "ticketName":"Child With Autism","ageFrom":20,"ageTo":55,
         "ticketPrice":0.0,"discount":false,"refundable":false,
         "totalTickets":50,"ticketId":1134,
         "tdrId":1,"noOfTickets":3,"price":0.0,"discountPrice":0.0,
-        "ticketSelected":false,"isDeleted":0
+        "ticketSelected":false,"isDeleted":0,
+        "participantMasterCollection": [
+          {
+            "participantId": 2040,
+            "fieldName": "First Name",
+            "fieldType": "text_box",
+            "fieldRequired": true,
+            "modifiedOn": 1439774086453,
+            "modifiedBy": 36,
+            "participantSpecimenId": 1
+          },
+          {
+            "participantId": 2041,
+            "fieldName": "Last Name",
+            "fieldType": "text_box",
+            "fieldRequired": true,
+            "modifiedOn": 1439774086457,
+            "modifiedBy": 36,
+            "participantSpecimenId": 2
+          },
+          {
+            "participantId": 2042,
+            "fieldName": "Gender",
+            "fieldType": "radio_button",
+            "fieldRequired": true,
+            "modifiedOn": 1439774086457,
+            "modifiedBy": 36,
+            "participantSpecimenId": 3
+          },
+          {
+            "participantId": 2043,
+            "fieldName": "Date of Birth",
+            "fieldType": "date_picker",
+            "fieldRequired": true,
+            "modifiedOn": 1439774086457,
+            "modifiedBy": 36,
+            "participantSpecimenId": 4
+          },
+          {
+            "participantId": 2044,
+            "fieldName": "Address",
+            "fieldType": "text_box",
+            "fieldRequired": true,
+            "modifiedOn": 1439774086457,
+            "modifiedBy": 36,
+            "participantSpecimenId": 5
+          },
+          {
+            "participantId": 2045,
+            "fieldName": "Postal Code",
+            "fieldType": "text_box",
+            "fieldRequired": true,
+            "modifiedOn": 1439774086457,
+            "modifiedBy": 36,
+            "participantSpecimenId": 6
+          }
+        ]
       }];
       */
       return [];
@@ -48,7 +216,68 @@ angular.module('frApp')
       e.participantInformation.fill({});
     });
 
-    $scope.formData = {};
+    /*Views, Participation, payment, confirm*/
+    $scope.CurrentVIEW = 0 ;
+
+
+    var parseInputField = function(k){
+      if(k === 'text_box') {return 'text' ;}
+      if(k === 'radio_button') {return 'radio' ;}
+      if(k === 'date_picker') {return 'date' ;}
+      return 'text';
+    };
+
+    $scope.tickets.forEach(function(e){
+      e.vm = {};
+      e.vm.user = {};
+      e.vm.userFields = [];
+      e.participantMasterCollection.forEach(function(f){
+        if(f.fieldType === 'radio_button'){
+          e.vm.userFields.push(
+            {
+              key: f.fieldName ,
+              type: 'radio',
+              templateOptions: {
+                //type: parseInputField(f.fieldType),
+                label: f.fieldName,
+                //placeholder: 'Enter '+f.fieldName
+                options: [{
+                  name:'Male',
+                  value:'male'
+                },{
+                  name:'Female',
+                  value:'female'
+                }]
+              }
+            }
+          )
+        }else{
+          e.vm.userFields.push({
+            key: f.fieldName ,
+            type: 'input',
+            templateOptions: {
+              type: parseInputField(f.fieldType),
+              label: f.fieldName,
+              placeholder: 'Enter '+f.fieldName
+            }
+          })
+        }
+      })
+    });
+
+    var calculateRecursiveIndex = function(z, X){
+      while ((z - $scope.tickets[X].noOfTickets) >= 0 ){
+        z -= $scope.tickets[X].noOfTickets;
+        X += 1 ;
+      }
+      return X;
+    };
+
+    var getCurrentTicketIndex = function(c){
+      if (!c) {c = parseInt($scope.Progress.current);}
+      return calculateRecursiveIndex(c,0);
+    };
+
 
     $scope.Progress = {
       steps : (function(){
@@ -62,8 +291,8 @@ angular.module('frApp')
       copyFromTicketNumber : 0,
       UserInformation : new Array(this.steps),
       SaveUserInformation : function() {
-        this.UserInformation[this.current] = $scope.formData;
-        $scope.formData = {} ;
+        this.UserInformation[this.current] = $scope.tickets[getCurrentTicketIndex()].vm.user;
+        $scope.tickets[getCurrentTicketIndex()].vm.user = {} ;
         this.copyFromTicketNumber = 'select';
       },
       MarkerIndices : [],
@@ -79,14 +308,15 @@ angular.module('frApp')
       isFirst : function(){ return this.current === 0 ;},
       isLast : function(){ return this.current === this.steps-1 ;},
       setStep : function(a){
-        $scope.formData = Object.assign({}, this.UserInformation[a] || {});
+        var k = getCurrentTicketIndex(a);
+        $scope.tickets[k].vm.user = Object.assign({}, this.UserInformation[a] || {});
         this.current = a;
       },
       copyFrom : function(){
-        $scope.formData = Object.assign({}, this.UserInformation[this.copyFromTicketNumber] || {});
+        $scope.tickets[getCurrentTicketIndex()].vm.user = Object.assign({}, this.UserInformation[this.copyFromTicketNumber] || {});
       },
       clearAllValues : function(){
-        $scope.formData = {};
+        $scope.tickets[getCurrentTicketIndex()].vm.user = {};
         this.copyFromTicketNumber = 'select';
       },
       getLinearIndex: function(a, b){
@@ -105,11 +335,10 @@ angular.module('frApp')
         if (this.MarkerIndices.indexOf(this.current) < 0){
           this.MarkerIndices.push(this.current);
         }
+        $scope.CurrentVIEW = 1;
         console.log($scope.Progress);
       }
     };
 
-
-
-
+    $scope.ProgressTicketIndex = getCurrentTicketIndex;
   });
