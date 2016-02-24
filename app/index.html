@@ -8,16 +8,17 @@
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
   <!-- build:css(.) styles/vendor.css -->
   <!-- bower:css -->
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css">
-  <link rel="stylesheet" href="bower_components/angular-responsive-tables/release/angular-responsive-tables.css">
+  <link rel="stylesheet" href="styles/vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="styles/vendor/font-awesome.min.css">
+  <link rel="stylesheet" href="styles/vendor/angular-responsive-tables.min.css">
   <!-- endbower -->
   <!-- endbuild -->
   <!-- build:css(.tmp) styles/main.css -->
   <link rel="stylesheet" href="styles/main.css">
   <!-- endbuild -->
+  <style>*[ng-cloak] { display: none}</style>
 </head>
-<body ng-app="frApp" ng-controller="IndexCtrl">
+<body ng-app="frApp" ng-controller="IndexCtrl" ng-cloak>
 <!--[if lte IE 8]>
 <p class="browseHappy">Update your browser for better experience.</p>
 <![endif]-->
@@ -66,13 +67,13 @@
 
 <!-- build:js(.) scripts/vendor.js -->
 <!-- bower:js -->
-<script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/angular-route/angular-route.js"></script>
-<script src="bower_components/ngmap/build/scripts/ng-map.js"></script>
-<script src="bower_components/angular-responsive-tables/release/angular-responsive-tables.js"></script>
-<script src="bower_components/api-check/dist/api-check.js"></script>
-<script src="bower_components/angular-formly/dist/formly.js"></script>
-<script src="bower_components/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.js"></script>
+<script src="scripts/vendor/angular.min.js"></script>
+<script src="scripts/vendor/angular-route.min.js"></script>
+<script src="scripts/vendor/ng-map.min.js"></script>
+<script src="scripts/vendor/angular-responsive-tables.min.js"></script>
+<script src="scripts/vendor/api-check.min.js"></script>
+<script src="scripts/vendor/formly.min.js"></script>
+<script src="scripts/vendor/angular-formly-templates-bootstrap.min.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 
