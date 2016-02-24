@@ -34,16 +34,15 @@
         </tfoot>
       </table>
       <div class="col-md-offset-1 col-md-10 col-xs-12">
-        <ng-form name="regForm">
+        <form id="regForm" ng-submit="proceedToNextStep(UserEmail)" novalidate>
           <div class="form-group">
             <label for="EmailID">Email address <span style="color: red;">*</span></label>
-            <input type="email" class="form-control" id="EmailId" placeholder="Please enter your Email" ng-model="UserEmail" ng-required="true">
-            <div role="alert">
-              <span class="error" ng-show="myForm.userName.$error.required">Required!</span>
-            </div>
+            <input type="email" name="email" class="form-control" id="UserEmail" placeholder="Please enter your Email"
+                   ng-model="UserEmail" required>
+            <p ng-show="ShowDirtyEmailAlert" class="invalid-message" style="color: red">Enter a valid email.</p>
           </div>
-          <button class="btn btn-primary"  ng-disabled="!tickets.totalTicketSelected" ng-click="proceedToNextStep(UserEmail)">Register</button>
-        </ng-form><hr>
+          <button class="btn btn-primary" ng-disabled="!tickets.totalTicketSelected" type="submit">Register</button>
+        </form><hr>
         <strong>* Discounts will be applied at the time of confirmation.
           Kindly follow the instructions on confirmation page. </strong>
       </div>

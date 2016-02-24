@@ -71,7 +71,7 @@ angular.module('frApp')
           console.log(e);
         });
       }else {
-        alert("Enter valid email id !");
+        $scope.ShowDirtyEmailAlert = 'true';
       }
 
     };
