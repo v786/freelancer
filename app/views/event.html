@@ -10,18 +10,32 @@
           <i class="fa fa-clock-o"></i>
           <span>{{event.eventTime}}</span>
         </div>
+        <hr>
       </div>
-      <hr>
       <div class="row">
         <div class="col-md-12">
           <i class="fa fa-map-marker"></i> &nbsp;
           {{event.address}}
           <div style="float: right;">
-          <button class="btn btn-info" ng-click="ShowMap = !ShowMap">
+          <button class="btn btn-default" ng-click="ShowMap = !ShowMap">
             <span ng-if="!ShowMap">Show Map</span>
             <span ng-if="ShowMap">Hide Map</span>
           </button>
         </div>
+          <hr class="blackRule">
+        </div>
+        <hr class="blackRule">
+        <div class="col-md-12">
+          <span class="eventText"><strong>Organised By : </strong></span><br>
+          <i class="fa fa-user"></i>
+          <span class="eventText">{{organiser.manager}}</span><br>
+          <i class="fa  fa-location-arrow"></i>
+          <span class="eventText"><em>{{organiser.location}}</em></span><br>
+          <i class="fa fa-phone"></i>
+          <span class="eventText">{{organiser.phone}} </span><br>
+          <i class="fa fa-envelope"></i>
+          <span class="eventText">{{organiser.email}}</span><br>
+          <hr class="blackRule">
         </div>
 
         <div class="col-md-12 MapView" ng-if="ShowMap" ng-init="ShowMap = false">
