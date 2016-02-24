@@ -26,15 +26,8 @@
         </div>
         <hr class="blackRule">
         <div class="col-md-12">
-          <span class="eventText"><strong>Organised By : </strong></span><br>
-          <i class="fa fa-user"></i>
-          <span class="eventText">{{organiser.manager}}</span><br>
-          <i class="fa  fa-location-arrow"></i>
-          <span class="eventText"><em>{{organiser.location}}</em></span><br>
-          <i class="fa fa-phone"></i>
-          <span class="eventText">{{organiser.phone}} </span><br>
-          <i class="fa fa-envelope"></i>
-          <span class="eventText">{{organiser.email}}</span><br>
+          <span class="eventText"><strong>Organised By :   </strong></span>
+          <span class="eventText" ng-click="ShowOrganiserDetails();" style="cursor: pointer">{{organiser.manager}}</span><br>
           <hr class="blackRule">
         </div>
 

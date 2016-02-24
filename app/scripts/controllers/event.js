@@ -8,7 +8,7 @@
  * Controller of the frApp
  */
 angular.module('frApp')
-  .controller('EventCtrl', function ($scope, $sce, getJsonFromServer) {
+  .controller('EventCtrl', function ($scope, $sce, getJsonFromServer, ngDialog) {
     $scope.event = {};
 
     //production use some method like $http ;
@@ -34,6 +34,9 @@ angular.module('frApp')
         })() ,
         phone : data.response.organizerDetails.phone || "Not Available" ,
         email : data.response.organizerDetails.emailId || "Not Available"
+      };
+      $scope.ShowOrganiserDetails = function () {
+        ngDialog.open({ template: '/views/organiser.html' });
       };
     });
 

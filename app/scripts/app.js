@@ -9,7 +9,7 @@
  * Main module of the application.
  */
 angular
-  .module('frApp', ['ngRoute', 'ngMap', 'wt.responsive', 'formly', 'formlyBootstrap'])
+  .module('frApp', ['ngRoute', 'ngMap', 'wt.responsive', 'formly', 'formlyBootstrap', 'ngDialog'])
   .config(function ($routeProvider) {
 
     $routeProvider
