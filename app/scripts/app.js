@@ -28,7 +28,7 @@ angular
         controller: 'BuyCtrl',
         controllerAs: 'buy'
       })
-      .when('/IAmLost', {
+      .when('/invalidResourceParameter', {
         templateUrl: 'views/iamlost.html',
         controller: 'IamlostCtrl',
         controllerAs: 'IAmLost'

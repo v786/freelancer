@@ -18,18 +18,23 @@ angular.module('frApp')
       if($rootScope.resourceUrl){
         $http.get($rootScope.resourceUrl)
           .success(function(data){
-            $log.info(data);
-            $rootScope.JTemp = data;
-            deferred.resolve(data);
+            //$log.info(data);
+            if (data.response){
+              $rootScope.JTemp = data;
+              deferred.resolve(data);
+            }else {
+              $location.path('invalidResourceParameter');
+            }
           }).error(function(e){
           $log.error(e);
           deferred.reject(e);
           alert('error occurred, check log');
+          $location.path('invalidResourceParameter');
         });
       }
       else {
         deferred.reject("invalid resource parameter");
-        $location.path('IAmLost');
+        $location.path('invalidResourceParameter');
       }
     }
     return deferred.promise;
