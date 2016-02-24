@@ -1,4 +1,4 @@
-<div style="padding: 5%;">
+<div style="padding: 5%;" ng-cloak>
   <div class="row" >
     <div class="col-md-offset-1 col-md-10 col-xs-12 tableBorder">
       <table class="table table-bordered table-hover" wt-responsive-table>
@@ -36,8 +36,11 @@
       <div class="col-md-offset-1 col-md-10 col-xs-12">
         <ng-form name="regForm">
           <div class="form-group">
-            <label for="EmailID">Email address <small>[ Required ]</small></label>
+            <label for="EmailID">Email address <span style="color: red;">*</span></label>
             <input type="email" class="form-control" id="EmailId" placeholder="Please enter your Email" ng-model="UserEmail" ng-required="true">
+            <div role="alert">
+              <span class="error" ng-show="myForm.userName.$error.required">Required!</span>
+            </div>
           </div>
           <button class="btn btn-primary"  ng-disabled="!tickets.totalTicketSelected" ng-click="proceedToNextStep(UserEmail)">Register</button>
         </ng-form><hr>
