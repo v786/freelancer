@@ -59,16 +59,16 @@
           </form>
 
           <!-- dynamic form start -->
-          <div ng-repeat="ticket in tickets" ng-if="CurrentVIEW === 0">
+          <form ng-repeat="ticket in tickets" ng-if="CurrentVIEW === 0" name="ticket.vm.user">
             <formly-form model="ticket.vm.user" fields="ticket.vm.userFields" ng-if="ProgressTicketIndex() == $index">
               <button type="submit" class="btn btn-primary" ng-if="!Progress.isLast(Progress.current)"
-                      ng-click="Progress.CheckAndProceedToNextStep();">Save Details for this Participant</button>
+                      ng-click="Progress.CheckAndProceedToNextStep();" ng-disabled="ShowProceedButton();">Save Details for this Participant</button>
               <button type="submit" class="btn btn-primary" ng-if="Progress.isLast(Progress.current)"
-                      ng-click="Progress.NextPhase();">Proceed to fill Billing Details</button>
+                      ng-click="Progress.NextPhase();"  ng-disabled="ticket.vm.user.$invalid">Proceed to fill Billing Details</button>
               <hr>
             </formly-form>
             <!-- dynamic form end -->
-          </div >
+          </form >
 
 
         </div>

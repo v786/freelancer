@@ -247,6 +247,7 @@ angular.module('frApp')
               key: f.fieldName ,
               type: 'radio',
               templateOptions: {
+                required : true,
                 label: f.fieldName,
                 options: (function(){
                   var k = [];
@@ -263,7 +264,7 @@ angular.module('frApp')
             key: f.fieldName,
             type: 'file',
             templateOptions: {
-            label: f.fieldName,
+              label: f.fieldName,
               description: 'Input File description',
               url: 'http://test.joinmyevent.com:8080/ems/ws/upload/'
             }
@@ -273,6 +274,7 @@ angular.module('frApp')
             type: 'textarea',
             key: f.fieldName,
             templateOptions: {
+              required : true,
               label: f.fieldName,
               rows: 4
             }
@@ -282,6 +284,7 @@ angular.module('frApp')
             key: f.fieldName ,
             type: 'select',
             templateOptions: {
+              required : true,
               label: f.fieldName,
               options: [{"name": "Size XL","value":"XL"},{"name": "Size L","value":"L"}]
             }
@@ -291,9 +294,11 @@ angular.module('frApp')
             key: f.fieldName ,
             type: 'input',
             templateOptions: {
+              required : true,
               type: parseInputField(f.fieldType),
               label: f.fieldName,
-              placeholder: 'Enter '+f.fieldName
+              placeholder: 'Enter '+f.fieldName,
+              'ng-style' : {'error':true}
             }
           })
         }
@@ -373,6 +378,7 @@ angular.module('frApp')
         $scope.CurrentVIEW = 1;
         $scope.ParticipantDetails = this.UserInformation.slice();
         console.log($scope.Progress);
+        //console.log($scope.tickets);
       }
     };
 
