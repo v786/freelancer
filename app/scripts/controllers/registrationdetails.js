@@ -230,6 +230,9 @@ angular.module('frApp')
       if(k === 'text_box') {return 'text' ;}
       if(k === 'radio_button') {return 'radio' ;}
       if(k === 'date_picker') {return 'date' ;}
+      if(k === 'file_select') {return 'file' ;}
+      if(k === 'text_area') {return 'textarea' ;}
+      if(k === 'drop_down') {return 'select' ;}
       return 'text';
     };
 
@@ -255,6 +258,34 @@ angular.module('frApp')
               }
             }
           )
+        }else if (f.fieldType === 'file_select'){
+          e.vm.userFields.push({
+            key: f.fieldName,
+            type: 'file',
+            templateOptions: {
+            label: f.fieldName,
+              description: 'Input File description',
+              url: 'http://test.joinmyevent.com:8080/ems/ws/upload/'
+            }
+          });
+        }else if(f.fieldType === 'text_area'){
+          e.vm.userFields.push({
+            type: 'textarea',
+            key: f.fieldName,
+            templateOptions: {
+              label: f.fieldName,
+              rows: 4
+            }
+          })
+        }else if(f.fieldType === 'drop_down'){
+          e.vm.userFields.push({
+            key: f.fieldName ,
+            type: 'select',
+            templateOptions: {
+              label: f.fieldName,
+              options: [{"name": "Size XL","value":"XL"},{"name": "Size L","value":"L"}]
+            }
+          })
         }else{
           e.vm.userFields.push({
             key: f.fieldName ,

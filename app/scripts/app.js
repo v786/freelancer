@@ -41,4 +41,10 @@ angular
       .otherwise({
         redirectTo: '/event'
       });
+  })
+  .run(function(formlyConfig){
+    formlyConfig.setType({
+      name : 'file',
+      templateUrl : '../../views/fileInput.html'
+    })
   });
