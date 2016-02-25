@@ -9,9 +9,9 @@
  * Main module of the application.
  */
 angular
-  .module('frApp', ['ngRoute', 'ngMap', 'wt.responsive', 'formly', 'formlyBootstrap', 'ngDialog'])
-  .config(function ($routeProvider) {
-
+  .module('frApp', ['ngRoute', 'ngMap', 'wt.responsive', 'formly', 'formlyBootstrap', 'ngDialog','chieffancypants.loadingBar'])
+  .config(function ($routeProvider, cfpLoadingBarProvider) {
+    cfpLoadingBarProvider.includeSpinner = false;
     $routeProvider
       .when('/event', {
         templateUrl: 'views/event.html',
