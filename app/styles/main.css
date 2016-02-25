@@ -167,6 +167,11 @@ body {
   color: black;
 }
 
+.activeFormBar, .activeFormBar:hover{
+  background-color: #6146f7 !important;
+  color: #f9f9f9;
+}
+
 .invalid-message{
   display: block;
   margin-top: 5px;

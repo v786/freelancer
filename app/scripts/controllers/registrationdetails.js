@@ -381,6 +381,17 @@ angular.module('frApp')
         //console.log($scope.tickets);
       }
     };
+    $scope.IsDirty = function(c){
+      for(var SomeProperty in c){
+        if(c.hasOwnProperty(SomeProperty)){
+          if(!c[SomeProperty]){
+            console.log(c);
+            return false;
+          }
+        }
+      }
+      return true;
+    };
 
     $scope.ProgressTicketIndex = getCurrentTicketIndex;
 

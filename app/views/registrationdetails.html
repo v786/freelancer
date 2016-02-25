@@ -23,7 +23,7 @@
             <li class="nav-sidebar-title">Type : {{TicketGroup.ticketName}}</li>
             <li ng-repeat="item in TicketGroup.participantInformation track by $index">
               <a ng-click="Progress.setStep(Progress.getLinearIndex($parent.$index-1, $index))"
-                 ng-style="{'activeFormBar':Progress.getLinearIndex($parent.$index-1, $index) == Progress.current}">
+                 ng-class="{'activeFormBar':Progress.getLinearIndex($parent.$index-1, $index) == Progress.current}">
                 Ticket #{{$index+1}}
                 <span class="fa floatRight fa-dot-circle-o"
                       ng-if="Progress.getLinearIndex($parent.$index-1, $index) == Progress.current"></span>
