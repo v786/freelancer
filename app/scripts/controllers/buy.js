@@ -60,7 +60,7 @@ angular.module('frApp')
           e.ticketSelected = e.noOfTickets > 0;
         });
         $http({
-          url : 'http://test.joinmyevent.com:8080/ems/ws/registration/'+email,
+          url : 'http://test.joinmyevent.com:8080/ems/ws/registration/'+email+'/',
           method : 'POST',
           data : ticketArray
         }).success(function(data){
