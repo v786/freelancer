@@ -64,7 +64,7 @@
 
           <!-- dynamic form start -->
           <form ng-repeat="ticket in tickets" ng-if="CurrentVIEW === 0" name="ticket.vm.user">
-            <div class="form-inline">
+            <div class="form-inline" ng-if="ProgressTicketIndex() == $index">
               <label>Copy Contents from</label>
               <select class="form-control" ng-change="Progress.copyFrom()" ng-model="Progress.copyFromTicketNumber"
                       ng-init="Progress.copyFromTicketNumber='select'">
