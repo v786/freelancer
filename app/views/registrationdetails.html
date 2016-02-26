@@ -34,50 +34,25 @@
           </ul>
         </div>
         <div class="col-md-9">
-          <!--
-          <form class="form-horizontal form-inline" ng-if="CurrentVIEW === 0">
 
+          <form class="form-inline">
             <label>Copy Contents from</label>
             <select class="form-control" ng-change="Progress.copyFrom()" ng-model="Progress.copyFromTicketNumber"
                     ng-init="Progress.copyFromTicketNumber='select'">
               <option>Select Ticket</option>
               <option ng-repeat-start="TicketGroup in tickets" class="disabled" disabled>{{TicketGroup.ticketName}}</option>
               <option ng-repeat="item in TicketGroup.participantInformation track by $index"
-              ng-value="Progress.getLinearIndex($parent.$index-1, $index)">Ticket #{{$index+1}}</option>
+                      ng-value="Progress.getLinearIndex($parent.$index-1, $index)">Ticket #{{$index+1}}</option>
               <option ng-repeat-end class="divider" disabled>------</option>
             </select>
             <button class="btn btn-warning" ng-click="Progress.clearAllValues()">Clear All Fields</button>
-
-            <div class="navbar-right" style="margin-right: 5px;">
-              <button ng-disabled="Progress.isFirst(Progress.current)" class="btn btn-danger" ng-click="Progress.previousStep()">
-                <span class="fa fa-chevron-left"></span>
-                Prev
-              </button>
-              <button ng-disabled="Progress.isLast(Progress.current)" class="btn btn-danger" ng-click="Progress.nextStep()">
-                Next
-                <span class="fa fa-chevron-right"></span>
-              </button>
-            </div>
-
           </form>
-          -->
+
 
           <!-- dynamic form start -->
           <form ng-repeat="ticket in tickets" ng-if="CurrentVIEW === 0" name="ticket.vm.user">
-            <div class="form-inline" ng-if="ProgressTicketIndex() == $index">
-              <label>Copy Contents from</label>
-              <select class="form-control" ng-change="Progress.copyFrom()" ng-model="Progress.copyFromTicketNumber"
-                      ng-init="Progress.copyFromTicketNumber='select'">
-                <option>Select Ticket</option>
-                <option ng-repeat-start="TicketGroup in tickets" class="disabled" disabled>{{TicketGroup.ticketName}}</option>
-                <option ng-repeat="item in TicketGroup.participantInformation track by $index"
-                        ng-value="Progress.getLinearIndex($parent.$index-1, $index)">Ticket #{{$index+1}}</option>
-                <option ng-repeat-end class="divider" disabled>------</option>
-              </select>
-              <button class="btn btn-warning" ng-click="Progress.clearAllValues()">Clear All Fields</button>
-            </div>
-            <h3 class="form-inline">TYPE : {{ticket.ticketName}}&nbsp; <small>INR:{{ticket.ticketPrice}}</small></h3>
-            <hr class="blackRule">
+            <h3 class="form-inline" ng-if="ProgressTicketIndex() == $index">TYPE : {{ticket.ticketName}}&nbsp; <small>INR:{{ticket.ticketPrice}}</small></h3>
+            <hr class="blackRule" ng-if="ProgressTicketIndex() == $index">
             <formly-form model="ticket.vm.user" fields="ticket.vm.userFields" ng-if="ProgressTicketIndex() == $index">
               <button type="submit" class="btn btn-primary" ng-if="!Progress.isLast(Progress.current)"
                       ng-click="Progress.CheckAndProceedToNextStep();" ng-disabled="ticket.vm.user.$invalid">Save Details for this Participant</button>
@@ -111,14 +86,14 @@
         <h3>Participant Details</h3>
         <table class="table table-bordered table-hover" wt-responsive-table>
           <thead>
-            <tr>
-              <th ng-repeat="(key,value) in ParticipantDetails[0]">{{key}}</th>
-            </tr>
+          <tr>
+            <th ng-repeat="(key,value) in ParticipantDetails[0]">{{key}}</th>
+          </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="Participant in ParticipantDetails">
-              <td ng-repeat="(k,v) in Participant">{{v}}</td>
-            </tr>
+          <tr ng-repeat="Participant in ParticipantDetails">
+            <td ng-repeat="(k,v) in Participant">{{v}}</td>
+          </tr>
           </tbody>
         </table>
         <hr>

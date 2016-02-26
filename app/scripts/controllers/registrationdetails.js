@@ -420,14 +420,6 @@ angular.module('frApp')
           }
         },
         {
-          key: 'Gender' ,
-          type: 'radio',
-          templateOptions: {
-            label: 'Gender',
-            options: [{name:'male',value:'male'},{name:'female',value:'female'}]
-          }
-        },
-        {
           key: 'DateOfBirth',
           type: 'input',
           templateOptions: {
