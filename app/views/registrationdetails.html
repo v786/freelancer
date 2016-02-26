@@ -34,7 +34,7 @@
           </ul>
         </div>
         <div class="col-md-9">
-
+          <!--copy content block -->
           <form class="form-inline">
             <label>Copy Contents from</label>
             <select class="form-control" ng-change="Progress.copyFrom()" ng-model="Progress.copyFromTicketNumber"
@@ -50,6 +50,7 @@
             </select>
             <button class="btn btn-warning" ng-click="Progress.clearAllValues()">Clear All Fields</button>
           </form>
+          <!-- copy content block end -->
 
 
           <!-- dynamic form start -->
@@ -72,15 +73,16 @@
       <!-- participant form stop -->
 
       <!-- billing form start -->
-      <div ng-if="CurrentVIEW === 1" class="col-md-offset-2 md-col-8">
+      <form ng-if="CurrentVIEW === 1" class="col-md-offset-2 md-col-8" name="payment.UserDetails">
         <h3>Fill In Billing details</h3>
         <formly-form model="payment.UserDetails" fields="payment.Fields">
-          <button type="submit" class="btn btn-primary" ng-click="payment.submit(payment.UserDetails);">
+          <button type="submit" class="btn btn-primary" ng-click="payment.submit(payment.UserDetails);"
+                  ng-disabled="payment.UserDetails.$invalid">
             Proceed to fill Billing Details
           </button>
           <hr>
         </formly-form>
-      </div>
+      </form>
       <!-- billing form stop -->
 
       <!-- Review start -->

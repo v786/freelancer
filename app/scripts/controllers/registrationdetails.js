@@ -402,11 +402,21 @@ angular.module('frApp')
 
 
     $scope.payment = {
+      copy : function(src,dest){
+        if (typeof src!== 'undefined'){
+          for (var i in src ){
+            if (src.hasOwnProperty(i)){
+              dest[i] = src[i] ;
+            }
+          }
+        }
+      },
       Fields : [
         {
           key: 'FirstName',
           type: 'input',
           templateOptions: {
+            required : true,
             type: 'text',
             label: 'First Name',
             placeholder: 'First Name'
@@ -416,6 +426,7 @@ angular.module('frApp')
           key: 'LastName',
           type: 'input',
           templateOptions: {
+            required : true,
             type: 'text',
             label: 'Last Name',
             placeholder: 'Last Name'
@@ -425,6 +436,7 @@ angular.module('frApp')
           key: 'DateOfBirth',
           type: 'input',
           templateOptions: {
+            required : true,
             type: 'date',
             label: 'Date Of Birth'
           }
@@ -433,6 +445,7 @@ angular.module('frApp')
           key: 'Address',
           type: 'textarea',
           templateOptions: {
+            required : true,
             type: 'textarea',
             label: 'Address'
           }
@@ -441,6 +454,7 @@ angular.module('frApp')
           key: 'zip',
           type: 'input',
           templateOptions: {
+            required : true,
             type: 'text',
             label: 'PinCode',
             placeholder: 'Enter Pin Code'
@@ -450,6 +464,7 @@ angular.module('frApp')
           key: 'City',
           type: 'input',
           templateOptions: {
+            required : true,
             type: 'text',
             label: 'City',
             placeholder: 'City'
@@ -459,6 +474,7 @@ angular.module('frApp')
           key: 'Country',
           type: 'select',
           templateOptions: {
+            required : true,
             label: 'Country',
             options: [{"name": "India","value":"india"},{"name": "other","value":"other"}]
           }
@@ -467,16 +483,18 @@ angular.module('frApp')
           key: 'Mobile',
           type: 'input',
           templateOptions: {
+            required : true,
             type: 'text',
             label: 'mobile',
             placeholder: 'Enter ten digit mobile number'
           }
         },
         {
-          key: 'checked',
+          key: 'TermsAndConditions',
           type: 'checkbox',
           templateOptions: {
-            label: 'I accept All terms and Conditions (*)'
+            required : true,
+            label: 'I accept All terms and Conditions'
           }
         }
       ],
