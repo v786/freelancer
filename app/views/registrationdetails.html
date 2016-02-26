@@ -42,7 +42,10 @@
               <option>Select Ticket</option>
               <option ng-repeat-start="TicketGroup in tickets" class="disabled" disabled>{{TicketGroup.ticketName}}</option>
               <option ng-repeat="item in TicketGroup.participantInformation track by $index"
-                      ng-value="Progress.getLinearIndex($parent.$index-1, $index)">Ticket #{{$index+1}}</option>
+                      ng-value="Progress.getLinearIndex($parent.$index-1, $index)"
+                      ng-if="!IsDirty(Progress.getLinearIndex($parent.$index-1, $index))">
+                Ticket #{{$index+1}}
+              </option>
               <option ng-repeat-end class="divider" disabled>------</option>
             </select>
             <button class="btn btn-warning" ng-click="Progress.clearAllValues()">Clear All Fields</button>

@@ -382,15 +382,17 @@ angular.module('frApp')
       }
     };
     $scope.IsDirty = function(c){
-      for(var SomeProperty in c){
-        if(c.hasOwnProperty(SomeProperty)){
-          if(!c[SomeProperty]){
-            console.log(c);
-            return false;
+      if(typeof $scope.Progress.UserInformation[c] == 'undefined'){
+        return true ;
+      }else {
+        var x = $scope.Progress.UserInformation[c] ;
+        for(var SomeProperty in x){
+          if (x.hasOwnProperty(SomeProperty) && !SomeProperty.match(/\$[\w+]/) && !x[SomeProperty]) {
+            return true;
           }
         }
+        return false;
       }
-      return true;
     };
 
     $scope.ProgressTicketIndex = getCurrentTicketIndex;
