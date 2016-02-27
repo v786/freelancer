@@ -38,8 +38,23 @@ angular
         controller: 'RegistrationDetailsCtrl',
         controllerAs: 'RegistrationDetails'
       })
+      .when('/registration/stepone', {
+        templateUrl: 'views/registration/stepone.html',
+        controller: 'RegistrationSteponeCtrl',
+        controllerAs: 'registration/stepOne'
+      })
+      .when('/registration/steptwo', {
+        templateUrl: 'views/registration/steptwo.html',
+        controller: 'RegistrationSteptwoCtrl',
+        controllerAs: 'registration/steptwo'
+      })
+      .when('/registration/stepthree', {
+        templateUrl: 'views/registration/stepthree.html',
+        controller: 'RegistrationStepthreeCtrl',
+        controllerAs: 'registration/stepthree'
+      })
       .otherwise({
-        redirectTo: '/event'
+        redirectTo: '/invalidResourceParameter'
       });
   })
   .run(function(formlyConfig){

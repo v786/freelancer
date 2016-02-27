@@ -1,0 +1,115 @@
+<div class="row" ng-cloak>
+  <div class="col-md-12 col-xs-12">
+    <div class="container-fluid">
+      <div class="row">
+        <h3 class="RegCenterText">Participants Registrations</h3>
+      </div>
+
+      <!-- top nav {STEP Display} start -->
+      <div class="row">
+        <div class="col-md-12">
+          <section class="row bs-wizard" style="border-bottom:0;">
+            <div class="col-xs-4 bs-wizard-step complete">
+              <div class="text-center bs-wizard-stepnum">Participant Details</div>
+              <div class="progress"><div class="progress-bar"></div></div>
+              <a href="#/registration/stepone" class="bs-wizard-dot"></a>
+              <div class="bs-wizard-info text-center">Fill in details for all Participants.</div>
+            </div>
+
+            <div class="col-xs-4 bs-wizard-step complete"><!-- complete -->
+              <div class="text-center bs-wizard-stepnum">Buyer Information</div>
+              <div class="progress"><div class="progress-bar"></div></div>
+              <a href="#/registration/steptwo" class="bs-wizard-dot"></a>
+              <div class="bs-wizard-info text-center">Fill in Information for Billing</div>
+            </div>
+
+            <div class="col-xs-4 bs-wizard-step active"><!-- complete -->
+              <div class="text-center bs-wizard-stepnum">Review</div>
+              <div class="progress"><div class="progress-bar"></div></div>
+              <a href="#/registration/stepthree" class="bs-wizard-dot"></a>
+              <div class="bs-wizard-info text-center">Verify Registration</div>
+            </div>
+          </section>
+        </div>
+      </div>
+      <!-- COPY SECTION START-->
+      <div class="row" style="margin-top: 25px;">
+        <div class="col-md-offset-1 col-md-10">
+          <div class="main-area col-md-9">
+            <div class="checkout-page-area">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="about-us-title" style="border: 1px solid #DDD; padding: 10px;">
+                    <h2>Buyer Details</h2>
+                    <h5>Name : {{BillingUserDetails['First Name']}}&nbsp;{{BillingUserDetails['Last Name']}}</h5>
+                    <h5>Address: {{BillingUserDetails['Address']}}</h5>
+                    <h5>Pincode: {{BillingUserDetails['zip']}}</h5>
+                    <h5>City: {{BillingUserDetails['city']}}</h5>
+                    <h5>Country: {{BillingUserDetails['country']}}</h5>
+                    <h5>Mobile: {{BillingUserDetails['mobile']}}</h5>
+                  </div>
+                </div>
+              </div>
+              <!-- Start content -->
+              <div class="row">
+                <div class="col-md-12">
+                  <h2>Participant Summary</h2>
+                  <table  class="table table-bordered table-hover" wt-responsive-table>
+                    <tr>
+                      <th ng-repeat="header in headers track by $index">
+                        <span>{{header}}</span>
+                      </th>
+                    </tr>
+                    <tr ng-repeat="listItem in ParticipantDetails">
+                      <td ng-repeat="header in headers track by $index">
+                        {{listItem[header]|date:'medium'}}
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <!-- Stop Content -->
+          </div>
+          <div class="col-md-3" style="border: 1px solid #DDD;">
+            <div class="row" style="padding: 10px;">
+              <h3>Order Summary</h3>
+              <section>
+                <table class="table table-bordered table-responsive">
+                  <tr>
+                    <th>Total</th>
+                    <th>5000</th>
+                  </tr>
+                </table>
+                <button class="btn btn-primary btn-block" style="margin-top:5px;margin-bottom:5px">Apply Discount</button>
+              </section>
+              <div class="block-center table-responsive">
+                <table class="table table-bordered">
+                  <thead>
+                  <tr>
+                    <th class="first_item">Price</th>
+                    <th class="item mywishlist_second">6000</th>
+                  </tr>
+                  <tr>
+                    <th class="first_item">Discount</th>
+                    <th class="item mywishlist_second">1000</th>
+                  </tr>
+                  <tr>
+                    <th class="first_item">Total</th>
+                    <th class="item mywishlist_second">5000</th>
+                  </tr>
+                  </thead>
+                </table>
+                <button class="btn btn-primary btn-block" style="margin-top:5px;margin-bottom:5px">Place Order</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End main area -->
+
+      <!-- COPY SECTION STOP -->
+
+    </div>
+  </div>
+</div>

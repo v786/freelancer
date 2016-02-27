@@ -1,0 +1,105 @@
+<div class="row" ng-cloak>
+  <div class="col-md-12 col-xs-12">
+    <div class="container-fluid">
+      <div class="row">
+        <h3 class="RegCenterText">Participants Registrations</h3>
+      </div>
+
+      <!-- top nav {STEP Display} start -->
+      <div class="row">
+        <div class="col-md-12">
+          <section class="row bs-wizard" style="border-bottom:0;">
+            <div class="col-xs-4 bs-wizard-step active">
+              <div class="text-center bs-wizard-stepnum">Participant Details</div>
+              <div class="progress"><div class="progress-bar"></div></div>
+              <a href="#/registration/stepone" class="bs-wizard-dot"></a>
+              <div class="bs-wizard-info text-center">Fill in details for all Participants.</div>
+            </div>
+
+            <div class="col-xs-4 bs-wizard-step notActive"><!-- complete -->
+              <div class="text-center bs-wizard-stepnum">Buyer Information</div>
+              <div class="progress"><div class="progress-bar"></div></div>
+              <a href="#/registration/steptwo" class="bs-wizard-dot"></a>
+              <div class="bs-wizard-info text-center">Fill in Information for Billing</div>
+            </div>
+
+            <div class="col-xs-4 bs-wizard-step notActive"><!-- complete -->
+              <div class="text-center bs-wizard-stepnum">Review</div>
+              <div class="progress"><div class="progress-bar"></div></div>
+              <a href="#/registration/stepthree" class="bs-wizard-dot"></a>
+              <div class="bs-wizard-info text-center">Verify Registration</div>
+            </div>
+          </section>
+          <!--
+          <ul class="nav nav-pills nav-justified">
+            <li role="presentation" class="active"><a>Participants Registrations</a></li>
+            <li role="presentation"><a>Buyer Information</a></li>
+            <li role="presentation"><a>Verify Registration</a></li>
+          </ul>
+          -->
+        </div>
+      </div>
+      <!-- top nav {STEP Display} end -->
+
+
+      <!-- participant form main area start -->
+      <div class="row" style="margin-top: 25px;">
+
+        <!-- side bar end -->
+        <div class="col-md-3 sidebar">
+          <ul class="nav nav-sidebar" ng-repeat="TicketGroup in tickets">
+            <li class="nav-sidebar-title">Type : {{TicketGroup.ticketName}}</li>
+            <li ng-repeat="item in TicketGroup.participantInformation track by $index">
+              <a ng-click="Progress.setStep(Progress.getLinearIndex($parent.$index-1, $index))"
+                 ng-class="{'activeFormBar':Progress.getLinearIndex($parent.$index-1, $index) == Progress.current}">
+                Ticket #{{$index+1}}
+                <span class="fa fa-check-circle-o floatRight"
+                      ng-if="Progress.IsMarkedFilled(Progress.getLinearIndex($parent.$index-1, $index))"></span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <!-- side bar end -->
+
+        <div class="col-md-9">
+
+          <!--copy content block -->
+          <form class="form-inline">
+            <label>Copy Contents from</label>
+            <select class="form-control" ng-change="Progress.copyFrom()" ng-model="Progress.copyFromTicketNumber"
+                    ng-init="Progress.copyFromTicketNumber='select'">
+              <option>Select Ticket</option>
+              <option ng-repeat-start="TicketGroup in tickets" class="disabled" disabled>{{TicketGroup.ticketName}}</option>
+              <option ng-repeat="item in TicketGroup.participantInformation track by $index"
+                      ng-value="Progress.getLinearIndex($parent.$index-1, $index)"
+                      ng-if="!IsDirty(Progress.getLinearIndex($parent.$index-1, $index))">
+                Ticket #{{$index+1}}
+              </option>
+              <option ng-repeat-end class="divider" disabled>------</option>
+            </select>
+            <button class="btn btn-warning" ng-click="Progress.clearAllValues()">Clear All Fields</button>
+          </form>
+          <!-- copy content block end -->
+
+          <!-- dynamic form start -->
+          <form ng-repeat="ticket in tickets" name="ticket.vm.user">
+            <h3 class="form-inline" ng-if="ProgressTicketIndex() == $index">TYPE : {{ticket.ticketName}}&nbsp; <small>INR:{{ticket.ticketPrice}}</small></h3>
+            <hr class="blackRule" ng-if="ProgressTicketIndex() == $index">
+            <formly-form model="ticket.vm.user" fields="ticket.vm.userFields" ng-if="ProgressTicketIndex() == $index">
+              <button type="submit" class="btn btn-primary" ng-if="!Progress.isLast(Progress.current)"
+                      ng-click="Progress.CheckAndProceedToNextStep();" ng-disabled="ticket.vm.user.$invalid">Save Details for this Participant</button>
+              <button type="submit" class="btn btn-primary" ng-if="Progress.isLast(Progress.current)"
+                      ng-click="Progress.NextPhase();"  ng-disabled="ticket.vm.user.$invalid">Proceed to fill Billing Details</button>
+              <hr>
+            </formly-form>
+          </form >
+          <!-- dynamic form end -->
+
+        </div>
+      </div>
+      <!-- participant form stop -->
+
+    </div>
+  </div>
+</div>
+

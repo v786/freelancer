@@ -66,7 +66,7 @@ angular.module('frApp')
         }).success(function(data){
           $rootScope.InstanceTicketJson = data;
           console.log(data);
-          $location.path('RegistrationDetails');
+          $location.path('/registration/stepone');
         }).error(function(e){
           console.log(e);
         });

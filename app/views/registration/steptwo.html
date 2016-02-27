@@ -1,0 +1,80 @@
+<div class="row" ng-cloak>
+  <div class="col-md-12 col-xs-12">
+    <div class="container-fluid">
+      <div class="row">
+        <h3 class="RegCenterText">Participants Registrations</h3>
+      </div>
+
+      <!-- top nav {STEP Display} start -->
+      <div class="row">
+        <div class="col-md-12">
+          <section class="row bs-wizard" style="border-bottom:0;">
+            <div class="col-xs-4 bs-wizard-step complete">
+              <div class="text-center bs-wizard-stepnum">Participant Details</div>
+              <div class="progress"><div class="progress-bar"></div></div>
+              <a href="#/registration/stepone" class="bs-wizard-dot"></a>
+              <div class="bs-wizard-info text-center">Fill in details for all Participants.</div>
+            </div>
+
+            <div class="col-xs-4 bs-wizard-step active"><!-- complete -->
+              <div class="text-center bs-wizard-stepnum">Buyer Information</div>
+              <div class="progress"><div class="progress-bar"></div></div>
+              <a href="#/registration/steptwo" class="bs-wizard-dot"></a>
+              <div class="bs-wizard-info text-center">Fill in Information for Billing</div>
+            </div>
+
+            <div class="col-xs-4 bs-wizard-step notActive"><!-- complete -->
+              <div class="text-center bs-wizard-stepnum">Review</div>
+              <div class="progress"><div class="progress-bar"></div></div>
+              <a href="#/registration/stepthree);" class="bs-wizard-dot"></a>
+              <div class="bs-wizard-info text-center">Verify Registration</div>
+            </div>
+          </section>
+          <!--
+          <ul class="nav nav-pills nav-justified">
+            <li role="presentation" class="active"><a>Participants Registrations</a></li>
+            <li role="presentation"><a>Buyer Information</a></li>
+            <li role="presentation"><a>Verify Registration</a></li>
+          </ul>
+          -->
+        </div>
+      </div>
+      <!-- top nav {STEP Display} end -->
+
+
+      <!-- billing form main area start -->
+      <div class="row" style="margin-top: 25px;">
+        <div class="col-md-offset-1 col-md-9">
+          <!-- dynamic form start -->
+          <form class="col-md-offset-2 md-col-8" name="payment.UserDetails">
+            <h3>Buyer Information</h3>
+            <!--copy content block -->
+            <section class="form-inline">
+              <label>Copy Contents from</label>
+              <select class="form-control" ng-change="payment.copyFrom()" ng-model="copyFromTicketNumber">
+                <option ng-repeat="user in payment.participantInformation" ng-value="$index" >
+                  {{user["First Name"]||''}}&nbsp;{{user["Last Name"]||''}}
+                </option>
+              </select>
+              <button class="btn btn-warning" ng-click="">Clear All Fields</button>
+            </section>
+            <hr class="blackRule">
+            <!-- copy content block end -->
+            <formly-form model="payment.UserDetails" fields="payment.Fields">
+              <button type="submit" class="btn btn-primary" ng-click="payment.submit(payment.UserDetails);"
+                      ng-disabled="payment.UserDetails.$invalid">
+                Proceed
+              </button>
+              <hr>
+            </formly-form>
+          </form>
+          <!-- dynamic form end -->
+
+        </div>
+      </div>
+      <!-- billing form stop -->
+
+    </div>
+  </div>
+</div>
+
