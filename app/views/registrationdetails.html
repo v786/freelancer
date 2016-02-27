@@ -92,12 +92,12 @@
         <table class="table table-bordered table-hover" wt-responsive-table>
           <thead>
           <tr>
-            <th ng-repeat="(key,value) in ParticipantDetails[0]">{{key}}</th>
+            <th ng-repeat="(key,value) in ParticipantDetails[0] track by $index">{{key}}</th>
           </tr>
           </thead>
           <tbody>
-          <tr ng-repeat="Participant in ParticipantDetails">
-            <td ng-repeat="(k,v) in Participant">{{v}}</td>
+          <tr ng-repeat="Participant in ParticipantDetails track by $index">
+            <td ng-repeat="(k,v) in Participant track by $index">{{v}}</td>
           </tr>
           </tbody>
         </table>

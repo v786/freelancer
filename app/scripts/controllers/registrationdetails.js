@@ -225,6 +225,14 @@ angular.module('frApp')
     $scope.ParticipantDetails = [];
     $scope.BillingUserDetails = {};
 
+    var findPropertyNameByRegex = function(o, r) {
+      for (var key in o) {
+        if (key.match(r)) {
+          return key;
+        }
+      }
+      return undefined;
+    };
 
     var parseInputField = function(k){
       if(k === 'text_box') {return 'text' ;}
@@ -377,6 +385,13 @@ angular.module('frApp')
         }
         $scope.CurrentVIEW = 1;
         $scope.ParticipantDetails = this.UserInformation.slice();
+        $scope.ParticipantDetails.forEach(function(e){
+          var regex = /formly_\w+/; //remove property formly_1
+          var delProp = findPropertyNameByRegex(e, regex);
+          if (delProp){
+            delete e[delProp];
+          }
+        });
         console.log($scope.Progress);
         //console.log($scope.tickets);
       }
@@ -501,6 +516,11 @@ angular.module('frApp')
       UserDetails : {},
       submit : function(f){
         $scope.BillingUserDetails = Object.assign({}, f);
+        var regex = /formly_\w+/; //remove property formly_1
+        var delProp = findPropertyNameByRegex($scope.BillingUserDetails, regex);
+        if (delProp){
+          delete $scope.BillingUserDetails[delProp];
+        }
         console.log(f);
         $scope.CurrentVIEW = 2;
       }
