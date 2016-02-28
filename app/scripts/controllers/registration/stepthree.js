@@ -8,7 +8,7 @@
  * Controller of the frApp
  */
 angular.module('frApp')
-  .controller('RegistrationStepthreeCtrl', function ($rootScope, $scope) {
+  .controller('RegistrationStepthreeCtrl', function ($rootScope, $scope, $http) {
     $scope.BillingUserDetails = $rootScope.BillingUserDetails;
     $scope.ParticipantDetails = $rootScope.ParticipantDetails;
     var headers =[];
@@ -47,5 +47,12 @@ angular.module('frApp')
 
     console.log(responseObject);
 
+    $http({
+      url : 'http://test.joinmyevent.com:8080/ems/ws/registration/applyDiscount/',
+      data : responseObject,
+      method : 'post'
+    }).success(function(data){
+      console.log(data);
+    });
 
   });
