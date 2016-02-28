@@ -9,7 +9,7 @@
  * Main module of the application.
  */
 angular
-  .module('frApp', ['ngRoute', 'ngMap', 'wt.responsive', 'formly', 'formlyBootstrap', 'ngDialog','chieffancypants.loadingBar'])
+  .module('frApp', ['ngRoute', 'ngMap', 'wt.responsive', 'formly', 'formlyBootstrap', 'ngDialog','chieffancypants.loadingBar', '720kb.datepicker'])
   .config(function ($routeProvider, cfpLoadingBarProvider) {
     cfpLoadingBarProvider.includeSpinner = false;
     $routeProvider
@@ -61,5 +61,9 @@ angular
     formlyConfig.setType({
       name : 'file',
       templateUrl : '../../views/fileInput.html'
+    });
+    formlyConfig.setType({
+      name : 'datepicker',
+      templateUrl : '../../views/datepicker.html'
     })
   });

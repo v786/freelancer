@@ -46,10 +46,9 @@ angular.module('frApp')
         },
         {
           key: 'Date Of Birth',
-          type: 'input',
+          type: 'datepicker',
           templateOptions: {
             required : true,
-            type: 'date',
             label: 'Date Of Birth'
           }
         },

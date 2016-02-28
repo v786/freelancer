@@ -12,11 +12,14 @@ angular.module('frApp')
   .controller('RegistrationSteponeCtrl', function ($rootScope, $scope, $location) {
 
     /* Get Ticket from previous step and Populate current scope */
-    $scope.tickets = $rootScope.InstanceTicketJson ? $rootScope.InstanceTicketJson.response : (function () {
-      alert('Improper Transition, if possible start from beginning or contact customer support');
-      return [];
-    })();
+    $scope.tickets = angular.copy(
+      $rootScope.InstanceTicketJson ? $rootScope.InstanceTicketJson.response : (function () {
+        alert('Improper Transition, if possible start from beginning or contact customer support');
+        return [];
+      })()
+    );
     $scope.tickets.forEach(function (e) {
+      e.$participantInformation = [];
       e.participantInformation = new Array(e.noOfTickets);
       e.participantInformation.fill({});
     });
@@ -133,7 +136,16 @@ angular.module('frApp')
               options: [{"name": "Size XL", "value": "XL"}, {"name": "Size L", "value": "L"}]
             }
           })
-        } else {
+        }else if (f.fieldType === 'date_picker') {
+          e.vm.userFields.push({
+            key: f.fieldName,
+            type: 'datepicker',
+            templateOptions: {
+              required: true,
+              label: f.fieldName
+            }
+          })
+        }else {
           e.vm.userFields.push({
             key: f.fieldName,
             type: 'input',
@@ -159,7 +171,7 @@ angular.module('frApp')
       return X;
     };
     var getCurrentTicketIndex = function (c) {
-      if (!c) {
+      if (!c && c!=0) {
         c = parseInt($scope.Progress.current);
       }
       return calculateRecursiveIndex(c, 0);
@@ -281,6 +293,12 @@ angular.module('frApp')
         //save all information in root scope
         //angular.copy(this.UserInformation, $rootScope.ParticipantDetails);
         this.UserInformation.forEach(function(e){$rootScope.ParticipantDetails.push(e);});
+
+        //also copy each user data in their respective ticket details
+        this.UserInformation.forEach(function(e, index){
+          $scope.tickets[getCurrentTicketIndex(index)].$participantInformation.push(e);
+        });
+        $rootScope.$tickets = angular.copy($scope.tickets);
 
         //remove unnecessary fields that we obviously  do not need
         $rootScope.ParticipantDetails.forEach(function (e) {

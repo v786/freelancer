@@ -23,4 +23,29 @@ angular.module('frApp')
 
     $scope.headers = headers;
 
+
+    var responseObject  = {
+      'ticketDetails': angular.copy($rootScope.$tickets),
+      'participantDetails':[]
+    };
+
+    responseObject.ticketDetails.forEach(function(e){
+      e.$participantInformation.forEach(function(f){
+        var k = {'order' : angular.copy($rootScope.InstanceTicketJson.registrationData)};
+        for (var j in f){
+          if (f.hasOwnProperty(j) && !j.match(/([\$])\w+/g) && !j.match(/formly_\w+/)){
+            k[j] = f[j];
+          }
+        }
+        k['tdrId'] = e['tdrId'];
+        responseObject.participantDetails.push(k);
+      });
+      delete e.$participantInformation;
+      delete e.vm;
+      delete e.participantInformation;
+    });
+
+    console.log(responseObject);
+
+
   });

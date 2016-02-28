@@ -56,12 +56,12 @@
                   <h2>Participant Summary</h2>
                   <table  class="table table-bordered table-hover" wt-responsive-table>
                     <tr>
-                      <th ng-repeat="header in headers track by $index">
+                      <th ng-repeat="header in headers track by $index | orderBy:$index">
                         <span>{{header}}</span>
                       </th>
                     </tr>
                     <tr ng-repeat="listItem in ParticipantDetails">
-                      <td ng-repeat="header in headers track by $index">
+                      <td ng-repeat="header in headers track by $index | orderBy:$index">
                         {{listItem[header]|date:'medium'}}
                       </td>
                     </tr>
