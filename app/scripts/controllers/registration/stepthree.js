@@ -45,6 +45,7 @@ angular.module('frApp')
       delete e.participantInformation;
     });
 
+    console.log('Object sent in get discount');
     console.log(responseObject);
 
     $http({
@@ -52,6 +53,7 @@ angular.module('frApp')
       data : responseObject,
       method : 'post'
     }).success(function(data){
+      console.log('Object received in get discount');
       console.log(data);
     });
 
