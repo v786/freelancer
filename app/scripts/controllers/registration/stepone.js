@@ -133,7 +133,14 @@ angular.module('frApp')
             templateOptions: {
               required: true,
               label: f.fieldName,
-              options: [{"name": "Size XL", "value": "XL"}, {"name": "Size L", "value": "L"}]
+              options: (function(){
+                var A = [];
+                f.additionalFieldMasterDTO.additionalFieldDetailsList.forEach(function(k){
+                  var option = k.additionalFieldDetailsValue;
+                  A.push({name:option,value:option});
+                });
+                return A;
+              })()
             }
           })
         }else if (f.fieldType === 'date_picker') {
