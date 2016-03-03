@@ -47,6 +47,7 @@ angular.module('frApp')
 
     console.log('Object sent in get discount');
     console.log(responseObject);
+    console.log(JSON.stringify(responseObject));
 
     $http({
       url : 'http://test.joinmyevent.com:8080/ems/ws/registration/applyDiscount/',
@@ -55,6 +56,7 @@ angular.module('frApp')
     }).success(function(data){
       console.log('Object received in get discount');
       console.log(data);
+      console.log(JSON.stringify(data));
     });
 
   });
