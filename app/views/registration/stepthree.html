@@ -89,14 +89,14 @@
           <div class="col-md-3" style="border: 1px solid #DDD;">
             <div class="row" style="padding: 10px;">
               <h3>Order Summary</h3>
-              <section>
+              <section ng-if='showDiscountButton'>
                 <table class="table table-bordered table-responsive">
                   <tr>
                     <th>Total</th>
                     <th>{{netCost}}</th>
                   </tr>
                 </table>
-                <button class="btn btn-primary btn-block" style="margin-top:5px;margin-bottom:5px">Apply Discount</button>
+                <button class="btn btn-primary btn-block" style="margin-top:5px;margin-bottom:5px" ng-click="ApplyDiscountOnClick()">Apply Discount</button>
               </section>
               <div class="block-center table-responsive">
                 <table class="table table-bordered">

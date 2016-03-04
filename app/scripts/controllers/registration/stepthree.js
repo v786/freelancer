@@ -22,7 +22,13 @@ angular.module('frApp')
     });
 
     $scope.headers = headers;
+    $scope.showDiscountButton = false;
 
+    $rootScope.$tickets.forEach(function(e) {
+      if (e.discountMasterList) {
+        $scope.showDiscountButton = true;        
+      }
+    })
 
     var responseObject  = {
       'ticketDetails': angular.copy($rootScope.$tickets),
