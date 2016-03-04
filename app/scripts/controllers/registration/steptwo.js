@@ -45,7 +45,7 @@ angular.module('frApp')
           }
         },
         {
-          key: 'emailId',
+          key: 'Email Id',
           type: 'input',
           templateOptions: {
             required : true,
@@ -119,14 +119,16 @@ angular.module('frApp')
       copy : function(src,dest){
         if (typeof src!== 'undefined'){
           for (var i in src ){
-            if (src.hasOwnProperty(i)){
+            if (src.hasOwnProperty(i) && !i.match(/\$[\w+]/g)){
               dest[i] = src[i] ;
             }
           }
         }
       },
-      copyFrom:function(){
-        console.log($scope.copyFromTicketNumber);
+      copyFrom:function(f){
+        console.log(this.participantInformation[f]);
+        console.log(this.UserDetails);
+        this.copy(this.participantInformation[f], this.UserDetails)
       },
       submit : function(f){
         $rootScope.BillingUserDetails = Object.assign({}, f);
