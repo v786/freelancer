@@ -102,7 +102,7 @@ angular.module('frApp')
                     k.push({name: e.fieldValue, value: e.fieldValue});
                   });
                   return k;
-                })() || [{name: 'male', value: 'male'}, {name: 'female', value: 'female'}]
+                })()
               }
             }
           )
@@ -131,14 +131,18 @@ angular.module('frApp')
             key: f.fieldName,
             type: 'select',
             templateOptions: {
-              required: true,
+              //required: true,
               label: f.fieldName,
               options: (function(){
                 var A = [];
-                f.additionalFieldMasterDTO.additionalFieldDetailsList.forEach(function(k){
-                  var option = k.additionalFieldDetailsValue;
-                  A.push({name:option,value:option});
-                });
+                try{
+                  f.additionalFieldMasterDTO.additionalFieldDetailsList.forEach(function(k){
+                    var option = k.additionalFieldDetailsValue;
+                    A.push({name:option,value:option});
+                  }); 
+                }catch(e){
+                  console.log(e);
+                }
                 return A;
               })()
             }
@@ -316,7 +320,7 @@ angular.module('frApp')
           }
         });
         console.log($rootScope.ParticipantDetails);
-        $location.path('/registration/steptwo')
+        $location.path('/registration/buyer')
       }
     };
 

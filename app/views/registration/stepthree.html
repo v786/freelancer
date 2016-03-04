@@ -12,21 +12,21 @@
             <div class="col-xs-4 bs-wizard-step complete">
               <div class="text-center bs-wizard-stepnum">Participant Details</div>
               <div class="progress"><div class="progress-bar"></div></div>
-              <a href="#/registration/stepone" class="bs-wizard-dot"></a>
+              <a ng-click="location.path('/registration/stepone')" class="bs-wizard-dot"></a>
               <div class="bs-wizard-info text-center">Fill in details for all Participants.</div>
             </div>
 
             <div class="col-xs-4 bs-wizard-step complete"><!-- complete -->
               <div class="text-center bs-wizard-stepnum">Buyer Information</div>
               <div class="progress"><div class="progress-bar"></div></div>
-              <a href="#/registration/steptwo" class="bs-wizard-dot"></a>
+              <a ng-click="location.path('/registration/steptwo')" class="bs-wizard-dot"></a>
               <div class="bs-wizard-info text-center">Fill in Information for Billing</div>
             </div>
 
             <div class="col-xs-4 bs-wizard-step active"><!-- complete -->
               <div class="text-center bs-wizard-stepnum">Review</div>
               <div class="progress"><div class="progress-bar"></div></div>
-              <a href="#/registration/stepthree" class="bs-wizard-dot"></a>
+              <a ng-click="location.path('/registration/stepthree')" class="bs-wizard-dot"></a>
               <div class="bs-wizard-info text-center">Verify Registration</div>
             </div>
           </section>
@@ -41,12 +41,13 @@
                 <div class="col-md-12">
                   <div class="about-us-title" style="border: 1px solid #DDD; padding: 10px;">
                     <h2>Buyer Details</h2>
-                    <h5>Name : {{BillingUserDetails['First Name']}}&nbsp;{{BillingUserDetails['Last Name']}}</h5>
-                    <h5>Address: {{BillingUserDetails['Address']}}</h5>
+                    <h5>Name  : {{BillingUserDetails['First Name']}}&nbsp;{{BillingUserDetails['Last Name']}}</h5>
+                    <!--<h5>Address: {{BillingUserDetails['Address']}}</h5>
                     <h5>Pincode: {{BillingUserDetails['zip']}}</h5>
                     <h5>City: {{BillingUserDetails['city']}}</h5>
-                    <h5>Country: {{BillingUserDetails['country']}}</h5>
+                    <h5>Country: {{BillingUserDetails['country']}}</h5>-->
                     <h5>Mobile: {{BillingUserDetails['mobile']}}</h5>
+                    <h5>Email : {{BillingUserDetails['emailId']}}</h5>
                   </div>
                 </div>
               </div>
@@ -56,14 +57,28 @@
                   <h2>Participant Summary</h2>
                   <table  class="table table-bordered table-hover" wt-responsive-table>
                     <tr>
+                    <!--
                       <th ng-repeat="header in headers track by $index | orderBy:$index">
                         <span>{{header}}</span>
                       </th>
+                    -->
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>Mobile</th>
+                      <th>Email</th>
+
                     </tr>
+                    <!--
                     <tr ng-repeat="listItem in ParticipantDetails">
                       <td ng-repeat="header in headers track by $index | orderBy:$index">
                         {{listItem[header]|date:'medium'}}
                       </td>
+                    </tr>-->
+                    <tr ng-repeat="listItem in ParticipantDetails">
+                      <td>{{listItem['First Name']}}</td>
+                      <td>{{listItem['Last Name']}}</td>
+                      <td>{{listItem['mobile']}}</td>
+                      <td>{{listItem['Email Id']}}</td>
                     </tr>
                   </table>
                 </div>
@@ -78,7 +93,7 @@
                 <table class="table table-bordered table-responsive">
                   <tr>
                     <th>Total</th>
-                    <th>5000</th>
+                    <th>{{netCost}}</th>
                   </tr>
                 </table>
                 <button class="btn btn-primary btn-block" style="margin-top:5px;margin-bottom:5px">Apply Discount</button>
@@ -88,15 +103,15 @@
                   <thead>
                   <tr>
                     <th class="first_item">Price</th>
-                    <th class="item mywishlist_second">6000</th>
+                    <th class="item mywishlist_second">{{NETCOST}}</th>
                   </tr>
                   <tr>
                     <th class="first_item">Discount</th>
-                    <th class="item mywishlist_second">1000</th>
+                    <th class="item mywishlist_second">0</th>
                   </tr>
                   <tr>
                     <th class="first_item">Total</th>
-                    <th class="item mywishlist_second">5000</th>
+                    <th class="item mywishlist_second">{{NETCOST}}</th>
                   </tr>
                   </thead>
                 </table>

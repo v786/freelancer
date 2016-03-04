@@ -31,7 +31,7 @@ angular.module('frApp')
             required : true,
             type: 'text',
             label: 'First Name',
-            placeholder: 'First Name'
+            placeholder: 'First Name (Required)'
           }
         },
         {
@@ -41,55 +41,19 @@ angular.module('frApp')
             required : true,
             type: 'text',
             label: 'Last Name',
-            placeholder: 'Last Name'
+            placeholder: 'Last Name (Required)'
           }
         },
         {
-          key: 'Date Of Birth',
-          type: 'datepicker',
-          templateOptions: {
-            required : true,
-            label: 'Date Of Birth'
-          }
-        },
-        {
-          key: 'Address',
-          type: 'textarea',
-          templateOptions: {
-            required : true,
-            type: 'textarea',
-            label: 'Address'
-          }
-        },
-        {
-          key: 'zip',
+          key: 'emailId',
           type: 'input',
           templateOptions: {
             required : true,
-            type: 'text',
-            label: 'PinCode',
-            placeholder: 'Enter Pin Code'
+            type: 'email',
+            label: 'Email Id',
+            placeholder: 'Email Id (Required)'
           }
-        },
-        {
-          key: 'city',
-          type: 'input',
-          templateOptions: {
-            required : true,
-            type: 'text',
-            label: 'City',
-            placeholder: 'City'
-          }
-        },
-        {
-          key: 'country',
-          type: 'select',
-          templateOptions: {
-            required : true,
-            label: 'Country',
-            options: [{"name": "India","value":"india"},{"name": "other","value":"other"}]
-          }
-        },
+        },        
         {
           key: 'mobile',
           type: 'input',
@@ -97,7 +61,49 @@ angular.module('frApp')
             required : true,
             type: 'text',
             label: 'mobile',
-            placeholder: 'Enter ten digit mobile number'
+            placeholder: 'Enter ten digit mobile number (Required)'
+          }
+        },
+        {
+          key: 'Date Of Birth',
+          type: 'datepicker',
+          templateOptions: {
+            label: 'Date Of Birth'
+          }
+        },
+        {
+          key: 'Address',
+          type: 'textarea',
+          templateOptions: {
+            type: 'textarea',
+            label: 'Address',
+            placeholder : 'Address (optional)'
+          }
+        },
+        {
+          key: 'zip',
+          type: 'input',
+          templateOptions: {
+            type: 'text',
+            label: 'PinCode',
+            placeholder: 'Enter Pin Code  (optional)'
+          }
+        },
+        {
+          key: 'city',
+          type: 'input',
+          templateOptions: {
+            type: 'text',
+            label: 'City',
+            placeholder: 'City  (optional)'
+          }
+        },
+        {
+          key: 'country',
+          type: 'select',
+          templateOptions: {
+            label: 'Country',
+            options: [{"name": "India","value":"india"},{"name": "other","value":"other"}]
           }
         },
         {
@@ -130,7 +136,7 @@ angular.module('frApp')
           delete $rootScope.BillingUserDetails[delProp];
         }
         console.log(f);
-        $location.path('/registration/stepthree')
+        $location.path('/registration/verify')
       }
     }
   });

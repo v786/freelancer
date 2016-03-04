@@ -8,7 +8,7 @@
  * Controller of the frApp
  */
 angular.module('frApp')
-  .controller('BuyCtrl', function ($scope, getJsonFromServer, $http, $location, $rootScope) {
+  .controller('BuyCtrl', function ($scope, getJsonFromServer, $http, $location, $rootScope, $filter) {
 
     $scope.tickets = {
       category : [],
@@ -31,10 +31,12 @@ angular.module('frApp')
         e.TicketSaleStatus = (function(){
           if(e.currentDatetime < e.salesStartDate){
             e.ShowThisTicket = false;
-            return "Sale Not Started" ;
+            var beautifulDate = $filter('date')(e.salesStartDate, 'dd-MMM-yyyy');
+            console.log('start date = '+ )
+            return "Opens on "+beautifulDate ;
           }else if(e.currentDatetime > e.salesEndDate){
             e.ShowThisTicket = false;
-            return "Sale has ended" ;
+            return "Closed" ;
           }else {
             e.ShowThisTicket = true;
             return "Sale is active" ;
@@ -66,7 +68,8 @@ angular.module('frApp')
         }).success(function(data){
           $rootScope.InstanceTicketJson = data;
           console.log(data);
-          $location.path('/registration/stepone');
+          $rootScope.NETCOST = angular.copy($scope.tickets.netCost);
+          $location.path('/registration/participant');
         }).error(function(e){
           console.log(e);
         });
@@ -75,6 +78,5 @@ angular.module('frApp')
       }
 
     };
-
 
   });

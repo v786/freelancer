@@ -38,17 +38,17 @@ angular
         controller: 'RegistrationDetailsCtrl',
         controllerAs: 'RegistrationDetails'
       })
-      .when('/registration/stepone', {
+      .when('/registration/participant', {
         templateUrl: 'views/registration/stepone.html',
         controller: 'RegistrationSteponeCtrl',
         controllerAs: 'registration/stepOne'
       })
-      .when('/registration/steptwo', {
+      .when('/registration/buyer', {
         templateUrl: 'views/registration/steptwo.html',
         controller: 'RegistrationSteptwoCtrl',
         controllerAs: 'registration/steptwo'
       })
-      .when('/registration/stepthree', {
+      .when('/registration/verify', {
         templateUrl: 'views/registration/stepthree.html',
         controller: 'RegistrationStepthreeCtrl',
         controllerAs: 'registration/stepthree'

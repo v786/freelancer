@@ -8,7 +8,7 @@
  * Controller of the frApp
  */
 angular.module('frApp')
-  .controller('RegistrationStepthreeCtrl', function ($rootScope, $scope, $http) {
+  .controller('RegistrationStepthreeCtrl', function ($rootScope, $scope, $http, $location) {
     $scope.BillingUserDetails = $rootScope.BillingUserDetails;
     $scope.ParticipantDetails = $rootScope.ParticipantDetails;
     var headers =[];
@@ -59,4 +59,6 @@ angular.module('frApp')
       console.log(JSON.stringify(data));
     });
 
+    $scope.netCost = $rootScope.NETCOST;
+    $scope.location = $location;
   });
