@@ -49,15 +49,17 @@ angular.module('frApp')
     console.log(responseObject);
     console.log(JSON.stringify(responseObject));
 
-    $http({
-      url : 'http://test.joinmyevent.com:8080/ems/ws/registration/applyDiscount/',
-      data : responseObject,
-      method : 'post'
-    }).success(function(data){
-      console.log('Object received in get discount');
-      console.log(data);
-      console.log(JSON.stringify(data));
-    });
+    $scope.ApplyDiscountOnClick = function(argument) {
+      $http({
+        url : window.appURLprifix + '/ws/registration/applyDiscount/',
+        data : responseObject,
+        method : 'post'
+      }).success(function(data){
+        console.log('Object received in get discount');
+        console.log(data);
+        console.log(JSON.stringify(data));
+      });
+    }
 
     $scope.netCost = $rootScope.NETCOST;
     $scope.location = $location;

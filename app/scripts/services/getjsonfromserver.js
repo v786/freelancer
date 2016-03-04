@@ -9,7 +9,7 @@
  */
 angular.module('frApp')
   .factory('getJsonFromServer', function ($http, $log, $q, $rootScope, $location) {
-    $rootScope.resourceUrl = 'http://test.joinmyevent.com:8080/ems/ws/registration/'+$location.search().eun ;
+    $rootScope.resourceUrl = window.appURLprifix + '/ws/registration/'+ ($location.search().eun || window.appName) ;
     //result should look like http://test.joinmyevent.com:8080/ems/ws/registration/causeathon
     var deferred = $q.defer();
     if($rootScope.JTemp){

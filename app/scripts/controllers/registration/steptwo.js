@@ -22,7 +22,7 @@ angular.module('frApp')
 
     /*Payment Details */
     $scope.payment = {
-      participantInformation : $rootScope.ParticipantDetails,
+      participantInformation : angular.copy($rootScope.ParticipantDetails),
       Fields : [
         {
           key: 'First Name',

@@ -51,9 +51,9 @@
             <!--copy content block -->
             <section class="form-inline">
               <label>Copy Contents from</label>
-              <select class="form-control" ng-change="payment.copyFrom()" ng-model="copyFromTicketNumber">
-                <option ng-repeat="user in payment.participantInformation track by $index" ng-value="$index" >
-                  {{user["First Name"]||''}}&nbsp;{{user["Last Name"]||''}}
+              <select class="form-control" ng-change="payment.copyFrom(this.value)" ng-model="copyFromTicketNumber">
+                <option ng-repeat="user in payment.participantInformation " ng-value="{{$index}}" >
+                  {{$index}}
                 </option>
               </select>
               <button class="btn btn-warning" ng-click="">Clear All Fields</button>

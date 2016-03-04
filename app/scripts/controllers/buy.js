@@ -32,7 +32,7 @@ angular.module('frApp')
           if(e.currentDatetime < e.salesStartDate){
             e.ShowThisTicket = false;
             var beautifulDate = $filter('date')(e.salesStartDate, 'dd-MMM-yyyy');
-            console.log('start date = '+ )
+            console.log('start date = '+ beautifulDate);
             return "Opens on "+beautifulDate ;
           }else if(e.currentDatetime > e.salesEndDate){
             e.ShowThisTicket = false;
@@ -62,7 +62,7 @@ angular.module('frApp')
           e.ticketSelected = e.noOfTickets > 0;
         });
         $http({
-          url : 'http://test.joinmyevent.com:8080/ems/ws/registration/'+email+'/',
+          url : window.appURLprifix + '/ws/registration/'+email+'/',
           method : 'POST',
           data : ticketArray
         }).success(function(data){

@@ -21,6 +21,24 @@
   <link rel="stylesheet" href="styles/main.css">
   <!-- endbuild -->
   <style>*[ng-cloak] { display: none}</style>
+
+  <!--  ********************************************************* -->
+  <!--                          GLOBALS                         -->
+  <!--  ********************************************************* -->
+  <script>
+    window.appName = 'causeathon'; // replace "causeathon" with a server variable eg: "<%=application%>"
+    window.appURLprifix = 'http://test.joinmyevent.com:8080/ems' ;
+  </script>
+  
+
+
+  <!--  ********************************************************* -->
+  <!--                          IMPORTANT                         -->
+  <!--  Include base tag if suitable and change line 61 in app.js -->
+  <!--  ********************************************************* -->
+  <!--<base href = "/app/causeathon/"> -->
+  <!--replace "causeathon" with a server variable "<%=application%>" -->
+
 </head>
 <body ng-app="frApp" ng-controller="IndexCtrl" ng-cloak>
 <!--[if lte IE 8]>
