@@ -11,6 +11,11 @@ angular.module('frApp')
   .controller('RegistrationStepthreeCtrl', function ($rootScope, $scope, $http, $location) {
     $scope.BillingUserDetails = $rootScope.BillingUserDetails;
     $scope.ParticipantDetails = $rootScope.ParticipantDetails;
+    $scope.netCost = $rootScope.NETCOST;
+    $scope.discount = false ;
+    $scope.discountedCost = false;
+    $scope.location = $location;
+
     var headers =[];
 
     $scope.ParticipantDetails.forEach(function(e){
@@ -25,14 +30,15 @@ angular.module('frApp')
     $scope.showDiscountButton = false;
 
     $rootScope.$tickets.forEach(function(e) {
-      if (e.discountMasterList) {
-        $scope.showDiscountButton = true;        
+      if (e.discount) {
+        $scope.showDiscountButton = true;
       }
-    })
+    });
 
     var responseObject  = {
       'ticketDetails': angular.copy($rootScope.$tickets),
       'participantDetails':[]
+      //'buyerDetails': angular.copy($scope.BillingUserDetails)
     };
 
     responseObject.ticketDetails.forEach(function(e){
@@ -44,6 +50,8 @@ angular.module('frApp')
           }
         }
         k['tdrId'] = e['tdrId'];
+        k['ticketAmount'] = e['ticketPrice'];
+        k['ticketId'] = e['ticketId'];
         responseObject.participantDetails.push(k);
       });
       delete e.$participantInformation;
@@ -51,9 +59,26 @@ angular.module('frApp')
       delete e.participantInformation;
     });
 
+    responseObject.participantDetails.forEach(function(e){
+      for (var i in e){
+        if(e.hasOwnProperty(i) && $rootScope.thisHasAdditionalFields[i]){
+          if(!e.participantDetailsAdditionalList){
+            e['participantDetailsAdditionalList'] = new Array();
+          }
+          e.participantDetailsAdditionalList.push({
+            "participantDetailsAdditionalId": $rootScope.thisHasAdditionalFields[i],
+            "participantValue": e[i]
+          });
+          delete e[i];
+        }
+      }
+
+    });
+
     console.log('Object sent in get discount');
     console.log(responseObject);
-    console.log(JSON.stringify(responseObject));
+    //console.log($rootScope.thisHasAdditionalFields);
+    //console.log(JSON.stringify(responseObject));
 
     $scope.ApplyDiscountOnClick = function(argument) {
       $http({
@@ -63,10 +88,39 @@ angular.module('frApp')
       }).success(function(data){
         console.log('Object received in get discount');
         console.log(data);
-        console.log(JSON.stringify(data));
+        //console.log(JSON.stringify(data));
+
+        /* SOME LOGIC TO IMPLEMENT DISCOUNT*/
+        /* ToDo :
+        $scope.discount = SOMETHING ;
+        $scope.discountedCost = $scope.netCost - $scope.discount;
+        */
+
       });
+    };
+
+    var submitFinalObject = angular.copy(responseObject);
+    //delete submitFinalObject.ticketDetails;
+    submitFinalObject['buyerDetails'] = angular.copy($scope.BillingUserDetails);
+    //var requiredFieldsOnly = ['email','firstName','lastName','mobileNo'];
+    for( var z in submitFinalObject.buyerDetails){
+      if (submitFinalObject.buyerDetails.hasOwnProperty(z) && z.match(/\$[\w]+/g)){
+        delete submitFinalObject.buyerDetails[z];
+      }
     }
 
-    $scope.netCost = $rootScope.NETCOST;
-    $scope.location = $location;
+    console.log('Object to be sent in submit');
+    console.log(submitFinalObject);
+
+    $scope.SaveThisInstanceData = function() {
+      $http({
+        url : window.appURLprifix + '/ws/registration/saveParticipant/'+$rootScope.InstanceTicketJson.registrationData.orderId+'/',
+        data : submitFinalObject,
+        method : 'post'
+      }).success(function(data){
+        console.log('Object received after POST submit');
+        console.log(data);
+      });
+    };
+
   });

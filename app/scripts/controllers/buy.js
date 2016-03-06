@@ -31,7 +31,7 @@ angular.module('frApp')
         e.TicketSaleStatus = (function(){
           if(e.currentDatetime < e.salesStartDate){
             e.ShowThisTicket = false;
-            var beautifulDate = $filter('date')(e.salesStartDate, 'dd-MMM-yyyy');
+            var beautifulDate = $filter('date')(e.salesStartDate, 'dd-MM-yyyy');
             console.log('start date = '+ beautifulDate);
             return "Opens on "+beautifulDate ;
           }else if(e.currentDatetime > e.salesEndDate){

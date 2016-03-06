@@ -82,6 +82,9 @@ angular.module('frApp')
       return 'text';
     };
 
+    /* catches dropdowns for later formating*/
+    $rootScope.thisHasAdditionalFields = {};
+
     /* Populate User Fields */
     $scope.tickets.forEach(function (e) {
       e.vm = {};
@@ -91,7 +94,7 @@ angular.module('frApp')
         if (f.fieldType === 'radio_button') {
           e.vm.userFields.push(
             {
-              key: f.fieldName,
+              key: (f.jsonFieldName || f.fieldName),
               type: 'radio',
               templateOptions: {
                 required: true,
@@ -102,70 +105,120 @@ angular.module('frApp')
                     k.push({name: e.fieldValue, value: e.fieldValue});
                   });
                   return k;
+                })(),
+                checkAdditional : (function(){
+                  try{
+                    if (f.additionalFieldMasterDTO) {
+                      $rootScope.thisHasAdditionalFields[(f.jsonFieldName || f.fieldName)] = f.additionalFieldMasterDTO.additionalFieldId; 
+                    }  
+                  }catch(e){
+                    console.warn(e);
+                  }
                 })()
               }
             }
           )
         } else if (f.fieldType === 'file_select') {
           e.vm.userFields.push({
-            key: f.fieldName,
+            key: (f.jsonFieldName || f.fieldName),
             type: 'file',
             templateOptions: {
               label: f.fieldName,
               description: 'Input File description',
-              url: 'http://test.joinmyevent.com:8080/ems/ws/upload/'
+              url: 'http://test.joinmyevent.com:8080/ems/ws/upload/',
+              checkAdditional : (function(){
+                try{
+                  if (f.additionalFieldMasterDTO) {
+                    $rootScope.thisHasAdditionalFields[(f.jsonFieldName || f.fieldName)] = f.additionalFieldMasterDTO.additionalFieldId; 
+                  }  
+                }catch(e){
+                  console.warn(e);
+                }
+              })()
             }
           });
         } else if (f.fieldType === 'text_area') {
           e.vm.userFields.push({
             type: 'textarea',
-            key: f.fieldName,
+            key: (f.jsonFieldName || f.fieldName),
             templateOptions: {
               required: true,
               label: f.fieldName,
-              rows: 4
+              rows: 4,
+              checkAdditional : (function(){
+                try{
+                  if (f.additionalFieldMasterDTO) {
+                    $rootScope.thisHasAdditionalFields[(f.jsonFieldName || f.fieldName)] = f.additionalFieldMasterDTO.additionalFieldId; 
+                  }  
+                }catch(e){
+                  console.warn(e);
+                }
+              })()
             }
           })
         } else if (f.fieldType === 'drop_down') {
           e.vm.userFields.push({
-            key: f.fieldName,
+            key: (f.jsonFieldName || f.fieldName),
             type: 'select',
             templateOptions: {
               //required: true,
               label: f.fieldName,
               options: (function(){
                 var A = [];
-                try{
-                  f.additionalFieldMasterDTO.additionalFieldDetailsList.forEach(function(k){
-                    var option = k.additionalFieldDetailsValue;
+                f.additionalFieldMasterDTO.additionalFieldDetailsList.forEach(function(k){
+                   var option = k.additionalFieldDetailsValue;
                     A.push({name:option,value:option});
-                  }); 
-                }catch(e){
-                  console.log(e);
-                }
+                });
                 return A;
+              })(),
+              checkAdditional : (function(){
+                try{
+                  if (f.additionalFieldMasterDTO) {
+                    $rootScope.thisHasAdditionalFields[(f.jsonFieldName || f.fieldName)] = f.additionalFieldMasterDTO.additionalFieldId; 
+                  }  
+                }catch(e){
+                  console.warn(e);
+                }
               })()
             }
           })
         }else if (f.fieldType === 'date_picker') {
           e.vm.userFields.push({
-            key: f.fieldName,
+            key: (f.jsonFieldName || f.fieldName),
             type: 'datepicker',
             templateOptions: {
               required: true,
-              label: f.fieldName
+              label: f.fieldName,
+              checkAdditional : (function(){
+                try{
+                  if (f.additionalFieldMasterDTO) {
+                    $rootScope.thisHasAdditionalFields[(f.jsonFieldName || f.fieldName)] = f.additionalFieldMasterDTO.additionalFieldId; 
+                  }  
+                }catch(e){
+                  console.warn(e);
+                }
+              })()
             }
           })
         }else {
           e.vm.userFields.push({
-            key: f.fieldName,
+            key: (f.jsonFieldName || f.fieldName),
             type: 'input',
             templateOptions: {
               required: true,
               type: parseInputField(f.fieldType),
               label: f.fieldName,
               placeholder: 'Enter ' + f.fieldName,
-              'ng-style': {'error': true}
+              'ng-style': {'error': true},
+              checkAdditional : (function(){
+                try{
+                  if (f.additionalFieldMasterDTO) {
+                    $rootScope.thisHasAdditionalFields[(f.jsonFieldName || f.fieldName)] = f.additionalFieldMasterDTO.additionalFieldId; 
+                  }  
+                }catch(e){
+                  console.warn(e);
+                }
+              })()
             }
           })
         }
@@ -300,7 +353,7 @@ angular.module('frApp')
         if (this.MarkerIndices.indexOf(this.current) < 0) {
           this.MarkerIndices.push(this.current);
         }
-        console.log(this.UserInformation);
+        //console.log(this.UserInformation);
         //save all information in root scope
         //angular.copy(this.UserInformation, $rootScope.ParticipantDetails);
         this.UserInformation.forEach(function(e){$rootScope.ParticipantDetails.push(e);});

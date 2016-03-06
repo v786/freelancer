@@ -12,21 +12,21 @@
             <div class="col-xs-4 bs-wizard-step active">
               <div class="text-center bs-wizard-stepnum">Participant Details</div>
               <div class="progress"><div class="progress-bar"></div></div>
-              <a href="#/registration/stepone" class="bs-wizard-dot"></a>
+              <li class="bs-wizard-dot"></li>
               <div class="bs-wizard-info text-center">Fill in details for all Participants.</div>
             </div>
 
             <div class="col-xs-4 bs-wizard-step notActive"><!-- complete -->
               <div class="text-center bs-wizard-stepnum">Buyer Information</div>
               <div class="progress"><div class="progress-bar"></div></div>
-              <a href="#/registration/steptwo" class="bs-wizard-dot"></a>
+              <li class="bs-wizard-dot"></li>
               <div class="bs-wizard-info text-center">Fill in Information for Billing</div>
             </div>
 
             <div class="col-xs-4 bs-wizard-step notActive"><!-- complete -->
               <div class="text-center bs-wizard-stepnum">Review</div>
               <div class="progress"><div class="progress-bar"></div></div>
-              <a href="#/registration/stepthree" class="bs-wizard-dot"></a>
+              <li class="bs-wizard-dot"></li>
               <div class="bs-wizard-info text-center">Verify Registration</div>
             </div>
           </section>
@@ -64,7 +64,7 @@
         <div class="col-md-9">
 
           <!--copy content block -->
-          <form class="form-inline">
+          <form class="form-inline" ng-if="Progress.UserInformation.length > 0">
             <label>Copy Contents from</label>
             <select class="form-control" ng-change="Progress.copyFrom()" ng-model="Progress.copyFromTicketNumber"
                     ng-init="Progress.copyFromTicketNumber='select'">

@@ -20,12 +20,21 @@ angular.module('frApp')
       return undefined;
     };
 
+    /*Reset non $ fields*/
+    var reset = function(o){
+      for (var i in o){
+        if (o.hasOwnProperty(i) && !i.match(/\$[\w+]/)){
+          delete o[i];
+        }
+      }
+    };
+
     /*Payment Details */
     $scope.payment = {
       participantInformation : angular.copy($rootScope.ParticipantDetails),
       Fields : [
         {
-          key: 'First Name',
+          key: 'firstName',
           type: 'input',
           templateOptions: {
             required : true,
@@ -35,7 +44,7 @@ angular.module('frApp')
           }
         },
         {
-          key: 'Last Name',
+          key: 'lastName',
           type: 'input',
           templateOptions: {
             required : true,
@@ -45,7 +54,7 @@ angular.module('frApp')
           }
         },
         {
-          key: 'Email Id',
+          key: 'email',
           type: 'input',
           templateOptions: {
             required : true,
@@ -53,9 +62,9 @@ angular.module('frApp')
             label: 'Email Id',
             placeholder: 'Email Id (Required)'
           }
-        },        
+        },
         {
-          key: 'mobile',
+          key: 'mobileNo',
           type: 'input',
           templateOptions: {
             required : true,
@@ -65,7 +74,7 @@ angular.module('frApp')
           }
         },
         {
-          key: 'Date Of Birth',
+          key: 'dob',
           type: 'datepicker',
           templateOptions: {
             label: 'Date Of Birth'
@@ -126,9 +135,13 @@ angular.module('frApp')
         }
       },
       copyFrom:function(f){
-        console.log(this.participantInformation[f]);
-        console.log(this.UserDetails);
+        //console.log(this.participantInformation[f]);
+        //console.log(this.UserDetails);
         this.copy(this.participantInformation[f], this.UserDetails)
+      },
+      clearAllValues: function () {
+        reset($scope.payment.UserDetails);
+        this.copyFromTicketNumber = 'select';
       },
       submit : function(f){
         $rootScope.BillingUserDetails = Object.assign({}, f);
@@ -137,7 +150,7 @@ angular.module('frApp')
         if (delProp){
           delete $rootScope.BillingUserDetails[delProp];
         }
-        console.log(f);
+        //console.log(f);
         $location.path('/registration/verify')
       }
     }

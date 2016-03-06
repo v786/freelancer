@@ -29,7 +29,7 @@
     window.appName = 'causeathon'; // replace "causeathon" with a server variable eg: "<%=application%>"
     window.appURLprifix = 'http://test.joinmyevent.com:8080/ems' ;
   </script>
-  
+
 
 
   <!--  ********************************************************* -->
@@ -38,6 +38,13 @@
   <!--  ********************************************************* -->
   <!--<base href = "/app/causeathon/"> -->
   <!--replace "causeathon" with a server variable "<%=application%>" -->
+
+  <style>
+    /********************  FIX FOR DATE PICKER ******************/
+    ._720kb-datepicker-calendar{
+      max-width: 300px;
+    }
+  </style>
 
 </head>
 <body ng-app="frApp" ng-controller="IndexCtrl" ng-cloak>
@@ -53,7 +60,7 @@
 </div>
 <div class="loading" ng-show="false">Loading&#8230;</div>
 <div class="container MainOuter">
-  <div class="row" ng-if="NavigationBar === 'topEnabled'">
+  <div class="row" ng-if="location.path()==='/buy' || location.path() ==='/event'">
     <div class="col-md-offset-1 col-md-10">
       <img ng-src="{{image.src}}" alt="img" class="EventBannerImage" ng-if="image.show">
       <div class="transparencyLayer FirstBannerText" ng-if="image.show">
@@ -66,10 +73,10 @@
       <!--  redundancy end  -->
     </div>
   </div>
-  <div class="row" ng-if="NavigationBar === 'topEnabled'">
+  <div class="row" ng-if="location.path()==='/buy' || location.path() ==='/event'">
     <div class="col-md-offset-1 col-md-10">
       <ul class="nav nav-tabs nav-justified tabSelector">
-        <li role="presentation" ng-class="{active:tab ==='event'}">
+        <li role="presentation" ng-class="{active:location.path() =='/event'}">
           <a ng-click="location.path('/event')">Event Details</a>
         </li>
         <!--
@@ -77,7 +84,7 @@
           <a href="#/organiser" ng-click="setTabActive('organiser')">Organiser Details</a>
         </li>
         -->
-        <li role="presentation" ng-class="{active:tab ==='buy'}">
+        <li role="presentation" ng-class="{active:location.path() =='/buy'}">
           <a ng-click="location.path('/buy')">Buy Tickets</a>
         </li>
       </ul>
