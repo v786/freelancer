@@ -36,7 +36,7 @@ angular.module('frApp')
         email : data.response.organizerDetails.emailId || "Not Available"
       };
       $scope.ShowOrganiserDetails = function () {
-        ngDialog.open({ template: '/views/organiser.html' });
+        ngDialog.open({ template: 'views/organiser.html' });
       };
     });
 
