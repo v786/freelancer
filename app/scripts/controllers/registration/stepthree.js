@@ -109,12 +109,16 @@ angular.module('frApp')
     var submitFinalObject = angular.copy(responseObject);
     //delete submitFinalObject.ticketDetails;
     submitFinalObject['buyerDetails'] = angular.copy($scope.BillingUserDetails);
-    //var requiredFieldsOnly = ['email','firstName','lastName','mobileNo'];
+    var requiredFieldsOnly = ['email','firstName','lastName','mobileNo'];
     for( var z in submitFinalObject.buyerDetails){
-      if (submitFinalObject.buyerDetails.hasOwnProperty(z) && z.match(/\$[\w]+/g)){
+      if (submitFinalObject.buyerDetails.hasOwnProperty(z) && (z.match(/\$[\w]+/g) || requiredFieldsOnly.indexOf(z) < 0)){
         delete submitFinalObject.buyerDetails[z];
       }
     }
+
+    /* BUG RESOLVE : server needs field "phoneNo" instead of "mobileNo" used elsewhere in program */
+    submitFinalObject.buyerDetails['phoneNo'] = submitFinalObject.buyerDetails['mobileNo'];
+    delete submitFinalObject.buyerDetails['mobileNo'];
 
     console.log('Object to be sent in submit');
     console.log(submitFinalObject);
