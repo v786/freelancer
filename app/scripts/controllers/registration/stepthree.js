@@ -12,8 +12,8 @@ angular.module('frApp')
     $scope.BillingUserDetails = $rootScope.BillingUserDetails;
     $scope.ParticipantDetails = $rootScope.ParticipantDetails;
     $scope.netCost = $rootScope.NETCOST;
-    $scope.discount = false ;
-    $scope.discountedCost = false;
+    $scope.discount = 0 ;
+    $scope.discountedCost = $scope.netCost;
     $scope.location = $location;
 
     var headers =[];
@@ -30,7 +30,7 @@ angular.module('frApp')
     $scope.showDiscountButton = false;
 
     $rootScope.$tickets.forEach(function(e) {
-      if (e.discount) {
+      if (e.discountMasterList.length > 0) {
         $scope.showDiscountButton = true;
       }
     });
@@ -91,10 +91,17 @@ angular.module('frApp')
         //console.log(JSON.stringify(data));
 
         /* SOME LOGIC TO IMPLEMENT DISCOUNT*/
-        /* ToDo :
-        $scope.discount = SOMETHING ;
+        /* ToDo : */
+        $scope.discount = (function(){
+          var Discount = 0;
+          data.response.forEach(function(e){
+            if(e.discountAmount){
+              Discount += e.discountAmount;
+            }
+          });
+          return Discount;
+        })() ;
         $scope.discountedCost = $scope.netCost - $scope.discount;
-        */
 
       });
     };
