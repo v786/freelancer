@@ -108,8 +108,8 @@ angular.module('frApp')
                 })(),
                 checkAdditional : (function(){
                   try{
-                    if (f.additionalFieldMasterDTO) {
-                      $rootScope.thisHasAdditionalFields[(f.jsonFieldName || f.fieldName)] = f.additionalFieldMasterDTO.additionalFieldId; 
+                    if (f.additionalFieldMaster ) {
+                      $rootScope.thisHasAdditionalFields[(f.jsonFieldName || f.fieldName)] = f.additionalFieldMaster.additionalFieldId; 
                     }  
                   }catch(e){
                     console.warn(e);
@@ -128,8 +128,8 @@ angular.module('frApp')
               url: 'http://test.joinmyevent.com:8080/ems/ws/upload/',
               checkAdditional : (function(){
                 try{
-                  if (f.additionalFieldMasterDTO) {
-                    $rootScope.thisHasAdditionalFields[(f.jsonFieldName || f.fieldName)] = f.additionalFieldMasterDTO.additionalFieldId; 
+                  if (f.additionalFieldMaster) {
+                    $rootScope.thisHasAdditionalFields[(f.jsonFieldName || f.fieldName)] = f.additionalFieldMaster.additionalFieldId; 
                   }  
                 }catch(e){
                   console.warn(e);
@@ -147,8 +147,8 @@ angular.module('frApp')
               rows: 4,
               checkAdditional : (function(){
                 try{
-                  if (f.additionalFieldMasterDTO) {
-                    $rootScope.thisHasAdditionalFields[(f.jsonFieldName || f.fieldName)] = f.additionalFieldMasterDTO.additionalFieldId; 
+                  if (f.additionalFieldMaster) {
+                    $rootScope.thisHasAdditionalFields[(f.jsonFieldName || f.fieldName)] = f.additionalFieldMaster.additionalFieldId; 
                   }  
                 }catch(e){
                   console.warn(e);
@@ -165,7 +165,7 @@ angular.module('frApp')
               label: f.fieldName,
               options: (function(){
                 var A = [];
-                f.additionalFieldMasterDTO.additionalFieldDetailsList.forEach(function(k){
+                f.additionalFieldMaster.additionalFieldDetailsList.forEach(function(k){
                    var option = k.additionalFieldDetailsValue;
                     A.push({name:option,value:option});
                 });
@@ -173,8 +173,8 @@ angular.module('frApp')
               })(),
               checkAdditional : (function(){
                 try{
-                  if (f.additionalFieldMasterDTO) {
-                    $rootScope.thisHasAdditionalFields[(f.jsonFieldName || f.fieldName)] = f.additionalFieldMasterDTO.additionalFieldId; 
+                  if (f.additionalFieldMaster) {
+                    $rootScope.thisHasAdditionalFields[(f.jsonFieldName || f.fieldName)] = f.additionalFieldMaster.additionalFieldId; 
                   }  
                 }catch(e){
                   console.warn(e);
@@ -191,8 +191,8 @@ angular.module('frApp')
               label: f.fieldName,
               checkAdditional : (function(){
                 try{
-                  if (f.additionalFieldMasterDTO) {
-                    $rootScope.thisHasAdditionalFields[(f.jsonFieldName || f.fieldName)] = f.additionalFieldMasterDTO.additionalFieldId; 
+                  if (f.additionalFieldMaster) {
+                    $rootScope.thisHasAdditionalFields[(f.jsonFieldName || f.fieldName)] = f.additionalFieldMaster.additionalFieldId; 
                   }  
                 }catch(e){
                   console.warn(e);
@@ -212,8 +212,8 @@ angular.module('frApp')
               'ng-style': {'error': true},
               checkAdditional : (function(){
                 try{
-                  if (f.additionalFieldMasterDTO) {
-                    $rootScope.thisHasAdditionalFields[(f.jsonFieldName || f.fieldName)] = f.additionalFieldMasterDTO.additionalFieldId; 
+                  if (f.additionalFieldMaster) {
+                    $rootScope.thisHasAdditionalFields[(f.jsonFieldName || f.fieldName)] = f.additionalFieldMaster.additionalFieldId; 
                   }  
                 }catch(e){
                   console.warn(e);

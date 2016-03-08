@@ -66,7 +66,7 @@ angular.module('frApp')
             e['participantDetailsAdditionalList'] = new Array();
           }
           e.participantDetailsAdditionalList.push({
-            "participantDetailsAdditionalId": $rootScope.thisHasAdditionalFields[i],
+            "participantId": $rootScope.thisHasAdditionalFields[i],
             "participantValue": e[i]
           });
           delete e[i];
@@ -130,7 +130,9 @@ angular.module('frApp')
         method : 'post'
       }).success(function(data){
         console.log('Object received after POST submit');
-        console.log(data);
+        console.log(data); 
+		 $rootScope.payuData = data.response;
+  	      $location.path("payu/"+ $rootScope.payuData.transactionId+"/"+ $rootScope.payuData.buyerId);
       });
     };
 

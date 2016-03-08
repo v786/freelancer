@@ -8,10 +8,20 @@
  *
  * Main module of the application.
  */
+
+ 
 angular
   .module('frApp', ['ngRoute', 'ngMap', 'wt.responsive', 'formly', 'formlyBootstrap', 'ngDialog','chieffancypants.loadingBar', '720kb.datepicker'])
-  .config(function ($routeProvider, cfpLoadingBarProvider, $locationProvider) {
+  .config(function($sceDelegateProvider){
+
+	  $sceDelegateProvider.resourceUrlWhitelist(['self','http://localhost:8080/ems/**']);
+
+	});
+angular
+  .module('frApp', ['ngRoute', 'ngMap', 'wt.responsive', 'formly', 'formlyBootstrap', 'ngDialog','chieffancypants.loadingBar', '720kb.datepicker'])
+  .config(function ($routeProvider, cfpLoadingBarProvider, $locationProvider, $sceProvider) {
     cfpLoadingBarProvider.includeSpinner = false;
+	$sceProvider.enabled(false);
     $routeProvider
       .when('/event', {
         templateUrl: 'views/event.html',
@@ -53,6 +63,14 @@ angular
         controller: 'RegistrationStepthreeCtrl',
         controllerAs: 'registration/stepthree'
       })
+	  .when('/payu/:txid/:bid', {
+             // templateUrl: 'PayURequest.html',
+          		 //templateUrl: 'http://10.1.7.101:8280/ems/loadData?txid='+$routeParams.txid+'&bid='+$routeParams.bid,
+          		//templateUrl: 'http://10.1.7.101:8280/ems/loadData',
+          		//templateUrl: function(params){ return 'http://10.1.7.101:8280/ems/loadData?txid=' + params.txid + '&bid='+ params.bid; },
+				templateUrl: function(params){ return  window.appURLprifix + '/loadData?txid=' + params.txid + '&bid='+ params.bid; },
+          		controller : 'payUCtrl'
+          	})
       .otherwise({
         redirectTo: '/event'
       });
