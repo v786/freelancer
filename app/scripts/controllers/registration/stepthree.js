@@ -8,7 +8,7 @@
  * Controller of the frApp
  */
 angular.module('frApp')
-  .controller('RegistrationStepthreeCtrl', function ($rootScope, $scope, $http, $location) {
+  .controller('RegistrationStepthreeCtrl', function ($rootScope, $scope, $http, $location, $q) {
     $scope.BillingUserDetails = $rootScope.BillingUserDetails;
     $scope.ParticipantDetails = $rootScope.ParticipantDetails;
     $scope.netCost = $rootScope.NETCOST;
@@ -51,6 +51,7 @@ angular.module('frApp')
         }
         k['tdrId'] = e['tdrId'];
         k['ticketAmount'] = e['ticketPrice'];
+        k['discountAmount'] = 0;
         k['ticketId'] = e['ticketId'];
         responseObject.participantDetails.push(k);
       });
@@ -80,7 +81,11 @@ angular.module('frApp')
     //console.log($rootScope.thisHasAdditionalFields);
     //console.log(JSON.stringify(responseObject));
 
+    var deferredDiscount = $q.defer();
+    $scope.IsDiscountApplied = false;
+    $scope.IsDiscountButtonClicked = false;
     $scope.ApplyDiscountOnClick = function(argument) {
+      $scope.IsDiscountButtonClicked = true;
       $http({
         url : window.appURLprifix + '/ws/registration/applyDiscount/',
         data : responseObject,
@@ -92,6 +97,8 @@ angular.module('frApp')
 
         /* SOME LOGIC TO IMPLEMENT DISCOUNT*/
         /* ToDo : */
+        deferredDiscount.resolve(data);
+        $scope.IsDiscountApplied = true;
         $scope.discount = (function(){
           var Discount = 0;
           data.response.forEach(function(e){
@@ -120,17 +127,30 @@ angular.module('frApp')
     submitFinalObject.buyerDetails['phoneNo'] = submitFinalObject.buyerDetails['mobileNo'];
     delete submitFinalObject.buyerDetails['mobileNo'];
 
+    /* BUG RESOLVE : Update discount whe receive discount from server */
+    deferredDiscount.promise.then(function(data){
+      data.response.forEach(function(e,i){
+        if(e.discountAmount){
+          submitFinalObject.participantDetails[i].discountAmount = e.discountAmount;
+        }
+      });
+      console.log('UPDATED Object to be sent in submit : ');
+      console.log(submitFinalObject);
+    });
+
     console.log('Object to be sent in submit');
     console.log(submitFinalObject);
 
+    $scope.IsSubmitButtonDisabled = false;
     $scope.SaveThisInstanceData = function() {
+      $scope.IsSubmitButtonDisabled = true;
       $http({
         url : window.appURLprifix + '/ws/registration/saveParticipant/'+$rootScope.InstanceTicketJson.registrationData.orderId+'/',
         data : submitFinalObject,
         method : 'post'
       }).success(function(data){
         console.log('Object received after POST submit');
-        console.log(data); 
+        console.log(data);
 		 $rootScope.payuData = data.response;
   	      $location.path("payu/"+ $rootScope.payuData.transactionId+"/"+ $rootScope.payuData.buyerId);
       });

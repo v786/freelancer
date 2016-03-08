@@ -89,14 +89,22 @@
           <div class="col-md-3" style="border: 1px solid #DDD;">
             <div class="row" style="padding: 10px;">
               <h3>Order Summary</h3>
-              <section ng-if='showDiscountButton'>
+              <section ng-if='showDiscountButton && !IsDiscountApplied'>
                 <table class="table table-bordered table-responsive">
                   <tr>
                     <th>Total</th>
                     <th>{{netCost}}</th>
                   </tr>
                 </table>
-                <button class="btn btn-primary btn-block" style="margin-top:5px;margin-bottom:5px" ng-click="ApplyDiscountOnClick()">Apply Discount</button>
+                <button class="btn btn-primary btn-block" style="margin-top:5px;margin-bottom:5px" ng-click="ApplyDiscountOnClick()"
+                        ng-disabled="IsDiscountButtonClicked">Apply Discount</button>
+              </section>
+              <section ng-if='IsDiscountApplied'>
+                <table class="table table-bordered table-responsive">
+                  <tr>
+                    <th>Discount Successfully Applied !</th>
+                  </tr>
+                </table>
               </section>
               <div class="block-center table-responsive">
                 <table class="table table-bordered">
@@ -115,7 +123,7 @@
                   </tr>
                   </thead>
                 </table>
-                <button class="btn btn-primary btn-block" ng-click='SaveThisInstanceData()' style="margin-top:5px;margin-bottom:5px">Place Order</button>
+                <button class="btn btn-warning btn-block" ng-disabled="IsSubmitButtonDisabled" ng-click='SaveThisInstanceData()' style="margin-top:5px;margin-bottom:5px">Place Order</button>
               </div>
             </div>
           </div>
