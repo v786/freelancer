@@ -26,6 +26,17 @@ angular.module('frApp')
       }
     });
 
+    (function(){
+      var index = 0 ;
+      $rootScope.$tickets.forEach(function(e) {
+        for (var i=0; i<e.noOfTickets; i++){
+          $scope.ParticipantDetails[index].ticketName = e.ticketName;
+          $scope.ParticipantDetails[index].ticketPrice = e.ticketPrice;
+          index++;
+        }
+      });
+    })();
+
     $scope.headers = headers;
     $scope.showDiscountButton = false;
 
@@ -136,6 +147,13 @@ angular.module('frApp')
       });
       console.log('UPDATED Object to be sent in submit : ');
       console.log(submitFinalObject);
+
+      /* BUG resolve: Update discount in verify page*/
+      data.response.forEach(function(e,i){
+        $scope.ParticipantDetails[i]['discount'] = e.discountAmount;
+      });
+      console.log($scope.ParticipantDetails);
+
     });
 
     console.log('Object to be sent in submit');

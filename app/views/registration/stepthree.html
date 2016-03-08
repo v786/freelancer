@@ -62,10 +62,9 @@
                         <span>{{header}}</span>
                       </th>
                     -->
-                      <th>First Name</th>
-                      <th>Last Name</th>
-                      <th>Mobile</th>
-                      <th>Email</th>
+                      <th>Participant</th>
+                      <th>Category</th>
+                      <th>Cost</th>
 
                     </tr>
                     <!--
@@ -75,10 +74,24 @@
                       </td>
                     </tr>-->
                     <tr ng-repeat="listItem in ParticipantDetails">
-                      <td>{{listItem['firstName']}}</td>
-                      <td>{{listItem['lastName']}}</td>
-                      <td>{{listItem['mobileNo']}}</td>
-                      <td>{{listItem['email']}}</td>
+                      <td>
+                        <h4>
+                          {{listItem['firstName']}}&nbsp;{{listItem['lastName']}}  <br>
+                          <small>
+                            {{listItem['mobileNo']}} <br>
+                            {{listItem['email']}}
+                          </small>
+                        </h4>
+                      </td>
+                      <td><h4>{{listItem['ticketName']}}</h4></td>
+                      <td>
+                        <h4>{{listItem['ticketPrice']}}
+                          <small ng-if="listItem['discount']">
+                            <br> &minus; {{listItem['discount']}}
+                            <br> &equals; {{listItem['ticketPrice']-listItem['discount']}}
+                          </small>
+                        </h4>
+                      </td>
                     </tr>
                   </table>
                 </div>
