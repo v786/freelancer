@@ -74,6 +74,11 @@ angular
 				templateUrl: function(params){ return  window.appURLprifix + '/loadData?txid=' + params.txid + '&bid='+ params.bid; },
           		controller : 'payUCtrl'
           	})
+      .when('/rescue/:orderId', {
+        templateUrl: 'views/rescue.html',
+        controller: 'RescueCtrl',
+        controllerAs: 'rescue'
+      })
       .otherwise({
         redirectTo: '/event'
       });
