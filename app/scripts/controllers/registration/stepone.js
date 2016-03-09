@@ -109,8 +109,8 @@ angular.module('frApp')
                 checkAdditional : (function(){
                   try{
                     if (f.additionalFieldMaster ) {
-                      $rootScope.thisHasAdditionalFields[(f.jsonFieldName || f.fieldName)] = f.participantId; 
-                    }  
+                      $rootScope.thisHasAdditionalFields[(f.jsonFieldName || f.fieldName)] = f.participantId;
+                    }
                   }catch(e){
                     console.warn(e);
                   }
@@ -130,7 +130,7 @@ angular.module('frApp')
                 try{
                   if (f.additionalFieldMaster) {
                     $rootScope.thisHasAdditionalFields[(f.jsonFieldName || f.fieldName)] = f.participantId;
-                  }  
+                  }
                 }catch(e){
                   console.warn(e);
                 }
@@ -149,7 +149,7 @@ angular.module('frApp')
                 try{
                   if (f.additionalFieldMaster) {
                     $rootScope.thisHasAdditionalFields[(f.jsonFieldName || f.fieldName)] = f.participantId;
-                  }  
+                  }
                 }catch(e){
                   console.warn(e);
                 }
@@ -174,8 +174,8 @@ angular.module('frApp')
               checkAdditional : (function(){
                 try{
                   if (f.additionalFieldMaster) {
-                    $rootScope.thisHasAdditionalFields[(f.jsonFieldName || f.fieldName)] = f.participantId; 
-                  }  
+                    $rootScope.thisHasAdditionalFields[(f.jsonFieldName || f.fieldName)] = f.participantId;
+                  }
                 }catch(e){
                   console.warn(e);
                 }
@@ -192,8 +192,8 @@ angular.module('frApp')
               checkAdditional : (function(){
                 try{
                   if (f.additionalFieldMaster) {
-                    $rootScope.thisHasAdditionalFields[(f.jsonFieldName || f.fieldName)] = f.participantId; 
-                  }  
+                    $rootScope.thisHasAdditionalFields[(f.jsonFieldName || f.fieldName)] = f.participantId;
+                  }
                 }catch(e){
                   console.warn(e);
                 }
@@ -214,7 +214,7 @@ angular.module('frApp')
                 try{
                   if (f.additionalFieldMaster) {
                     $rootScope.thisHasAdditionalFields[(f.jsonFieldName || f.fieldName)] = f.participantId;
-                  }  
+                  }
                 }catch(e){
                   console.warn(e);
                 }
@@ -271,6 +271,8 @@ angular.module('frApp')
         console.log($scope.tickets[getCurrentTicketIndex()].vm);
         reset($scope.tickets[getCurrentTicketIndex()].vm.user);
         this.copyFromTicketNumber = 'select';
+        /*BugFix: scroll to top*/
+        window.scrollTo(0,0);
       },
 
       /*stores which progress steps are completed */
