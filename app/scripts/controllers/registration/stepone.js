@@ -102,14 +102,14 @@ angular.module('frApp')
                 options: (function () {
                   var k = [];
                   f.participantSpecimenId.participantSpecimenDetailsList.forEach(function (e) {
-                    k.push({name: e.fieldValue, value: e.fieldValue});
+                    k.push({name: e.fieldValue, value: e.participantSpecimenDetailsId});
                   });
                   return k;
                 })(),
                 checkAdditional : (function(){
                   try{
                     if (f.additionalFieldMaster ) {
-                      $rootScope.thisHasAdditionalFields[(f.jsonFieldName || f.fieldName)] = f.additionalFieldMaster.additionalFieldId; 
+                      $rootScope.thisHasAdditionalFields[(f.jsonFieldName || f.fieldName)] = f.participantId; 
                     }  
                   }catch(e){
                     console.warn(e);
@@ -129,7 +129,7 @@ angular.module('frApp')
               checkAdditional : (function(){
                 try{
                   if (f.additionalFieldMaster) {
-                    $rootScope.thisHasAdditionalFields[(f.jsonFieldName || f.fieldName)] = f.additionalFieldMaster.additionalFieldId; 
+                    $rootScope.thisHasAdditionalFields[(f.jsonFieldName || f.fieldName)] = f.participantId;
                   }  
                 }catch(e){
                   console.warn(e);
@@ -148,7 +148,7 @@ angular.module('frApp')
               checkAdditional : (function(){
                 try{
                   if (f.additionalFieldMaster) {
-                    $rootScope.thisHasAdditionalFields[(f.jsonFieldName || f.fieldName)] = f.additionalFieldMaster.additionalFieldId; 
+                    $rootScope.thisHasAdditionalFields[(f.jsonFieldName || f.fieldName)] = f.participantId;
                   }  
                 }catch(e){
                   console.warn(e);
@@ -174,7 +174,7 @@ angular.module('frApp')
               checkAdditional : (function(){
                 try{
                   if (f.additionalFieldMaster) {
-                    $rootScope.thisHasAdditionalFields[(f.jsonFieldName || f.fieldName)] = f.additionalFieldMaster.additionalFieldId; 
+                    $rootScope.thisHasAdditionalFields[(f.jsonFieldName || f.fieldName)] = f.participantId; 
                   }  
                 }catch(e){
                   console.warn(e);
@@ -192,7 +192,7 @@ angular.module('frApp')
               checkAdditional : (function(){
                 try{
                   if (f.additionalFieldMaster) {
-                    $rootScope.thisHasAdditionalFields[(f.jsonFieldName || f.fieldName)] = f.additionalFieldMaster.additionalFieldId; 
+                    $rootScope.thisHasAdditionalFields[(f.jsonFieldName || f.fieldName)] = f.participantId; 
                   }  
                 }catch(e){
                   console.warn(e);
@@ -213,7 +213,7 @@ angular.module('frApp')
               checkAdditional : (function(){
                 try{
                   if (f.additionalFieldMaster) {
-                    $rootScope.thisHasAdditionalFields[(f.jsonFieldName || f.fieldName)] = f.additionalFieldMaster.additionalFieldId; 
+                    $rootScope.thisHasAdditionalFields[(f.jsonFieldName || f.fieldName)] = f.participantId;
                   }  
                 }catch(e){
                   console.warn(e);
