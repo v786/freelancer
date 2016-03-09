@@ -9,19 +9,19 @@
  * Main module of the application.
  */
 
- 
+
 angular
   .module('frApp', ['ngRoute', 'ngMap', 'wt.responsive', 'formly', 'formlyBootstrap', 'ngDialog','chieffancypants.loadingBar', '720kb.datepicker'])
   .config(function($sceDelegateProvider){
 
-	  $sceDelegateProvider.resourceUrlWhitelist(['self','http://localhost:8080/ems/**']);
+    $sceDelegateProvider.resourceUrlWhitelist(['self','http://localhost:8080/ems/**']);
 
-	});
+  });
 angular
   .module('frApp', ['ngRoute', 'ngMap', 'wt.responsive', 'formly', 'formlyBootstrap', 'ngDialog','chieffancypants.loadingBar', '720kb.datepicker'])
   .config(function ($routeProvider, cfpLoadingBarProvider, $locationProvider, $sceProvider) {
     cfpLoadingBarProvider.includeSpinner = false;
-	$sceProvider.enabled(false);
+    $sceProvider.enabled(false);
     $routeProvider
       .when('/event', {
         templateUrl: 'views/event.html',
@@ -48,20 +48,23 @@ angular
         controller: 'RegistrationDetailsCtrl',
         controllerAs: 'RegistrationDetails'
       })
-      .when('/registration/participant', {
+      .when('/participant', {
         templateUrl: 'views/registration/stepone.html',
         controller: 'RegistrationSteponeCtrl',
         controllerAs: 'registration/stepOne'
       })
-      .when('/registration/buyer', {
+      .when('/buyer', {
         templateUrl: 'views/registration/steptwo.html',
         controller: 'RegistrationSteptwoCtrl',
         controllerAs: 'registration/steptwo'
       })
-      .when('/registration/verify', {
+      .when('/verify', {
         templateUrl: 'views/registration/stepthree.html',
         controller: 'RegistrationStepthreeCtrl',
         controllerAs: 'registration/stepthree'
+      })
+      .when('/registration/:someRoute', {
+        redirectTo: function(routeParams){return '/' + routeParams['someRoute'] ;}
       })
 	  .when('/payu/:txid/:bid', {
              // templateUrl: 'PayURequest.html',
