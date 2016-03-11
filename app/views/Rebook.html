@@ -86,9 +86,9 @@
                       <td><h4>{{listItem['ticketName']}}</h4></td>
                       <td>
                         <h4>{{listItem['ticketPrice']}}
-                          <small ng-if="listItem['discount']">
-                            <br> &minus; {{listItem['discount']}}
-                            <br> &equals; {{listItem['ticketPrice']-listItem['discount']}}
+                          <small ng-if="listItem['discount'] || listItem['discountAmount']">
+                            <br> &minus; {{listItem['discount'] || listItem['discountAmount']}}
+                            <br> &equals; {{listItem['ticketPrice']-(listItem['discount'] || listItem['discountAmount'])}}
                           </small>
                         </h4>
                       </td>

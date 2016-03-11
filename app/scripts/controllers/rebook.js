@@ -29,8 +29,16 @@ angular.module('frApp')
           });
           return price;
         })();
-        $scope.discount = 0 ;
-        $scope.discountedCost = $scope.netCost;
+        $scope.discount = (function(){
+          var discount = 0 ;
+          dat.response.participantDetails.forEach(function(e){
+            if (e.discountAmount){
+              discount += e.discountAmount;
+            }
+          });
+          return discount;
+        })() ;
+        $scope.discountedCost = $scope.netCost - $scope.discount;
         (function(){
           var index = 0 ;
           $scope.tickets.forEach(function(e) {
@@ -45,11 +53,11 @@ angular.module('frApp')
         $scope.showDiscountButton = false;
 
         $scope.tickets.forEach(function(e) {
-			if(e.discountMasterList != null) {
-			  if (e.discountMasterList.length > 0) {
-				$scope.showDiscountButton = true;
-			  }
-			}
+          if(e.discountMasterList != null) {
+            if (e.discountMasterList.length > 0) {
+              $scope.showDiscountButton = true;
+            }
+          }
         });
 
         var responseObject  = angular.copy(dat.response);
