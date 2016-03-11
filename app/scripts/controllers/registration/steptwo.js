@@ -73,6 +73,7 @@ angular.module('frApp')
             placeholder: 'Enter ten digit mobile number (Required)'
           }
         },
+        /*,
         {
           key: 'dob',
           type: 'datepicker',
@@ -114,7 +115,7 @@ angular.module('frApp')
             label: 'Country',
             options: [{"name": "India","value":"india"},{"name": "other","value":"other"}]
           }
-        },
+        },*/
         {
           key: 'TermsAndConditions',
           type: 'checkbox',

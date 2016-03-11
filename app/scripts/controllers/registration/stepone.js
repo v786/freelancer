@@ -97,7 +97,7 @@ angular.module('frApp')
               key: (f.jsonFieldName || f.fieldName),
               type: 'radio',
               templateOptions: {
-                required: true,
+                required: f.fieldRequired,
                 label: f.fieldName,
                 options: (function () {
                   var k = [];
@@ -142,7 +142,7 @@ angular.module('frApp')
             type: 'textarea',
             key: (f.jsonFieldName || f.fieldName),
             templateOptions: {
-              required: true,
+              required: f.fieldRequired,
               label: f.fieldName,
               rows: 4,
               checkAdditional : (function(){
@@ -161,7 +161,7 @@ angular.module('frApp')
             key: (f.jsonFieldName || f.fieldName),
             type: 'select',
             templateOptions: {
-              //required: true,
+              required: f.fieldRequired,
               label: f.fieldName,
               options: (function(){
                 var A = [];
@@ -187,7 +187,7 @@ angular.module('frApp')
             key: (f.jsonFieldName || f.fieldName),
             type: 'datepicker',
             templateOptions: {
-              required: true,
+              required: f.fieldRequired,
               label: f.fieldName,
               checkAdditional : (function(){
                 try{
@@ -205,7 +205,7 @@ angular.module('frApp')
             key: (f.jsonFieldName || f.fieldName),
             type: 'input',
             templateOptions: {
-              required: true,
+              required: f.fieldRequired,
               type: parseInputField(f.fieldType),
               label: f.fieldName,
               placeholder: 'Enter ' + f.fieldName,
