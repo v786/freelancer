@@ -11,7 +11,7 @@
 
 
 angular
-  .module('frApp', ['ngRoute', 'ngMap', 'wt.responsive', 'formly', 'formlyBootstrap', 'ngDialog','chieffancypants.loadingBar', '720kb.datepicker'])
+  .module('frApp', ['ngRoute', 'ngMap', 'wt.responsive', 'formly', 'formlyBootstrap', 'ngDialog','chieffancypants.loadingBar', 'datePicker'])
   .config(function ($routeProvider, cfpLoadingBarProvider, $locationProvider, $sceProvider) {
     cfpLoadingBarProvider.includeSpinner = false;
     $sceProvider.enabled(false);
