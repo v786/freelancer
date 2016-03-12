@@ -1,49 +1,67 @@
-<div style="padding: 5%;" ng-controller="EventCtrl" ng-cloak>
-  <div class="row" >
-    <div class="col-md-offset-1 col-md-10 showBorder">
-      <div class="row">
-        <div class="col-md-3">
-          <i class="fa fa-calendar"></i>
-          <span>{{event.eventDate}}</span>
-        </div>
-        <div class="col-md-3">
-          <i class="fa fa-clock-o"></i>
-          <span>{{event.eventTime}}</span>
-        </div>
-        <hr>
+<div class="row " ng-controller="EventCtrl" ng-cloak>
+
+  <!-- Tab bar ~~IMPORTANT~~ changes should be copied to buy.html also -->
+  <div class="col-md-offset-1 col-md-10" style="padding: 25px; background-color:white">
+    <div class="row">
+      <div class="col-md-2 StateButton" ng-class="{active:location.path() =='/event'}" ng-click="location.path('/event')">
+        Event Details
       </div>
-      <div class="row">
-        <div class="col-md-12">
-          <i class="fa fa-map-marker"></i> &nbsp;
-          {{event.address}}
-          <div style="float: right;">
-          <button class="btn btn-default" ng-click="ShowMap = !ShowMap">
-            <span ng-if="!ShowMap">Show Map</span>
-            <span ng-if="ShowMap">Hide Map</span>
-          </button>
-        </div>
-          <hr class="blackRule">
-        </div>
-        <hr class="blackRule">
-        <div class="col-md-12">
-          <span class="eventText"><strong>Organised By :   </strong></span>
-          <span class="eventText" ng-click="ShowOrganiserDetails();" style="cursor: pointer">{{organiser.manager}}</span><br>
-          <hr class="blackRule">
-        </div>
-
-        <div class="col-md-12 MapView" ng-if="ShowMap" ng-init="ShowMap = false">
-          <div map-lazy-load="https://maps.google.com/maps/api/js">
-            <ng-map center="{{event.position.latitude}},{{event.position.longitude}}" zoom="{{event.position.zoom}}">
-              <marker position="{{event.position.latitude}},{{event.position.longitude}}"></marker>
-            </ng-map>
-          </div>
-        </div>
-        <hr>
-        <hr>
-        <div class="col-md-12" ng-bind-html="event.description()">
-        </div>
-
+      <div class="col-md-2 StateButton" ng-class="{active:location.path() =='/buy'}" ng-click="location.path('/buy')">
+        Buy Tickets
+      </div>
+      <div class="col-md-8" style="border: 1px solid #E9EAEE">
+        <section class="floatRight eventTextWrapper">
+          <span>Event Organised By</span>
+          <br>
+          <span class="eventText" ng-click="ShowOrganiserDetails();" style="cursor: pointer">
+            <strong>{{organiser.manager}}</strong>
+          </span>
+        </section>
       </div>
     </div>
   </div>
+  <!-- Tab bar Ends -->
+
+  <div class="col-md-offset-1 col-md-10" style="padding: 25px; background-color:white">
+    <div class="row">
+      <!-- main description -->
+      <div class="col-md-9" ng-bind-html="event.description()">
+      </div>
+      <!-- main description Ends -->
+
+      <!-- side floating boxes -->
+      <div class="col-md-3">
+        <section>
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              Date  & Time
+            </div>
+            <div class="panel-body">
+              <i class="fa fa-calendar"></i>
+              <span>{{event.eventDate}}</span>
+              <br>
+              <i class="fa fa-clock-o"></i>
+              <span>{{event.eventTime}}</span>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              Location
+            </div>
+            <div class="panel-body">
+              <i class="fa fa-map-marker"></i> &nbsp;
+              {{event.address}}
+              <hr>
+              <button class="btn btn-default btn-block" ng-click="ShowOnMaps()">Show on map</button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <!-- side floating boxes -->
+
+  </div>
+</div>
 </div>

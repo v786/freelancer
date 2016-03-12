@@ -47,7 +47,7 @@
   </style>
 
 </head>
-<body ng-app="frApp" ng-controller="IndexCtrl" ng-cloak>
+<body ng-app="frApp" ng-controller="IndexCtrl" ng-cloak ng-class="{coloredBackground:location.path()==='/buy' || location.path() ==='/event'}">
 <!--[if lte IE 8]>
 <p class="browseHappy">Update your browser for better experience.</p>
 <![endif]-->
@@ -59,9 +59,9 @@
   </a>
 </div>
 <div class="loading" ng-show="false">Loading&#8230;</div>
-<div class="container MainOuter">
+<div class="container MainOuter" ng-class="{coloredBackground:location.path()==='/buy' || location.path() ==='/event'}">
   <div class="row" ng-if="location.path()==='/buy' || location.path() ==='/event'">
-    <div class="col-md-offset-1 col-md-10">
+    <div class="col-md-offset-1 col-md-10" style="padding-right:0px;padding-left:0px;">
       <img ng-src="{{image.src}}" alt="img" class="EventBannerImage" ng-if="image.show">
       <div class="transparencyLayer FirstBannerText" ng-if="image.show">
         <span class="bannerText">{{eventName}}</span>
@@ -71,23 +71,6 @@
         <span class="bannerText">{{eventName}}</span>
       </div>
       <!--  redundancy end  -->
-    </div>
-  </div>
-  <div class="row" ng-if="location.path()==='/buy' || location.path() ==='/event'">
-    <div class="col-md-offset-1 col-md-10">
-      <ul class="nav nav-tabs nav-justified tabSelector">
-        <li role="presentation" ng-class="{active:location.path() =='/event'}">
-          <a ng-click="location.path('/event')">Event Details</a>
-        </li>
-        <!--
-        <li role="presentation" ng-class="{active:tab ==='organiser'}">
-          <a href="#/organiser" ng-click="setTabActive('organiser')">Organiser Details</a>
-        </li>
-        -->
-        <li role="presentation" ng-class="{active:location.path() =='/buy'}">
-          <a ng-click="location.path('/buy')">Buy Tickets</a>
-        </li>
-      </ul>
     </div>
   </div>
   <div ng-view=""></div>

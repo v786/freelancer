@@ -38,6 +38,9 @@ angular.module('frApp')
       $scope.ShowOrganiserDetails = function () {
         ngDialog.open({ template: 'views/organiser.html' });
       };
+      $scope.ShowOnMaps = function () {
+        ngDialog.open({ template: 'views/map.html' });
+      };
     });
 
 

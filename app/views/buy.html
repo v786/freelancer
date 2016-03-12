@@ -1,58 +1,72 @@
-<div style="padding: 5%;" ng-cloak>
-  <div class="row" >
-    <div class="col-md-offset-1 col-md-10 col-xs-12 tableBorder">
-      <table class="table table-bordered table-hover" wt-responsive-table>
-        <thead class="colouredHead">
-        <tr>
-          <th>Ticket Category</th>
-          <th>Ticket Price</th>
-          <th>No Of Tickets</th>
-          <th>Total Price</th>
-        </tr>
-        </thead>
+<div class="row" ng-controller="BuyCtrl" ng-cloak>
 
-        <tbody class="dataCell">
-        <tr ng-repeat="cat in tickets.category">
-        <!--
-          <td ng-if="cat.ShowThisTicket">{{cat.ticketName}}</td>
-          <td ng-if="cat.ShowThisTicket">{{cat.ticketPrice}}</td> -->
-          <td>{{cat.ticketName}}</td>
-          <td>{{cat.ticketPrice}}</td>
-          <td ng-if="cat.ShowThisTicket">
-            <select ng-model="cat.ticketsSelectedWithinCategory" ng-change="updateTotalCost();" >
-              <option value="0">select</option>
-              <option ng-repeat="i in cat.selectOptionArray" value="{{i}}">{{i}}</option>
-            </select>
-          </td>
-          <td ng-if="!cat.ShowThisTicket">{{cat.TicketSaleStatus}}</td>
-          <!--<td ng-if="cat.ShowThisTicket">{{cat.ticketsSelectedWithinCategory * cat.ticketPrice}}</td>
-          <td ng-if="!cat.ShowThisTicket" colspan="4">{{cat.TicketSaleStatus}}</td>-->
-          <td>{{cat.ticketsSelectedWithinCategory * cat.ticketPrice}}</td>
-        </tr>
-        </tbody>
-        <tfoot class="colouredHead">
-        <tr>
-          <th colspan="2">Total</th>
-          <th>{{tickets.totalTicketSelected}}</th>
-          <th>{{tickets.netCost}}</th>
-        </tr>
-        </tfoot>
-      </table>
-      <div class="col-md-offset-1 col-md-10 col-xs-12">
-        <form id="regForm" ng-submit="proceedToNextStep(UserEmail)" novalidate>
-          <div class="form-group">
-            <label for="EmailID">Email address <span style="color: red;">*</span></label>
-            <input type="email" name="email" class="form-control" id="UserEmail" placeholder="Please enter your Email"
-                   ng-model="UserEmail" required>
-            <p ng-show="ShowDirtyEmailAlert" class="invalid-message" style="color: red">Enter a valid email.</p>
-          </div>
-          <button class="btn btn-primary" ng-disabled="!tickets.totalTicketSelected" type="submit">Register</button>
-        </form><hr>
-        <strong>* Discounts will be applied at the time of confirmation.
-          Kindly follow the instructions on confirmation page. </strong>
+  <!-- Tab bar ~~IMPORTANT~~ changes should be copied to event.html also -->
+  <div class="col-md-offset-1 col-md-10" style="padding: 25px; background-color:white">
+    <div class="row">
+      <div class="col-md-2 StateButton" ng-class="{active:location.path() =='/event'}" ng-click="location.path('/event')">
+        Event Details
+      </div>
+      <div class="col-md-2 StateButton" ng-class="{active:location.path() =='/buy'}" ng-click="location.path('/buy')">
+        Buy Tickets
+      </div>
+      <div class="col-md-8" style="border: 1px solid #E9EAEE">
+
       </div>
     </div>
   </div>
-</div>
+  <!-- Tab bar ends -->
 
+  <div class="col-md-offset-1 col-md-10 col-xs-12 tableBorder" style="padding: 25px; background-color:white">
+    <table class="table table-bordered table-hover" wt-responsive-table>
+      <thead class="colouredHead">
+      <tr>
+        <th>Ticket Category</th>
+        <th>Ticket Price</th>
+        <th>No Of Tickets</th>
+        <th>Total Price</th>
+      </tr>
+      </thead>
+
+      <tbody class="dataCell">
+      <tr ng-repeat="cat in tickets.category">
+        <!--
+          <td ng-if="cat.ShowThisTicket">{{cat.ticketName}}</td>
+          <td ng-if="cat.ShowThisTicket">{{cat.ticketPrice}}</td> -->
+        <td>{{cat.ticketName}}</td>
+        <td>{{cat.ticketPrice}}</td>
+        <td ng-if="cat.ShowThisTicket">
+          <select ng-model="cat.ticketsSelectedWithinCategory" ng-change="updateTotalCost();" >
+            <option value="0">select</option>
+            <option ng-repeat="i in cat.selectOptionArray" value="{{i}}">{{i}}</option>
+          </select>
+        </td>
+        <td ng-if="!cat.ShowThisTicket">{{cat.TicketSaleStatus}}</td>
+        <!--<td ng-if="cat.ShowThisTicket">{{cat.ticketsSelectedWithinCategory * cat.ticketPrice}}</td>
+        <td ng-if="!cat.ShowThisTicket" colspan="4">{{cat.TicketSaleStatus}}</td>-->
+        <td>{{cat.ticketsSelectedWithinCategory * cat.ticketPrice}}</td>
+      </tr>
+      </tbody>
+      <tfoot class="colouredHead">
+      <tr>
+        <th colspan="2">Total</th>
+        <th>{{tickets.totalTicketSelected}}</th>
+        <th>{{tickets.netCost}}</th>
+      </tr>
+      </tfoot>
+    </table>
+    <div class="col-md-offset-1 col-md-10 col-xs-12">
+      <form id="regForm" ng-submit="proceedToNextStep(UserEmail)" novalidate>
+        <div class="form-group">
+          <label for="EmailId">Email address <span style="color: red;">*</span></label>
+          <input type="email" name="email" class="form-control" id="UserEmail" placeholder="Please enter your Email"
+                 ng-model="UserEmail" required>
+          <p ng-show="ShowDirtyEmailAlert" class="invalid-message" style="color: red">Enter a valid email.</p>
+        </div>
+        <button class="btn btn-primary" ng-disabled="!tickets.totalTicketSelected" type="submit">Register</button>
+      </form><hr>
+      <strong>* Discounts will be applied at the time of confirmation.
+        Kindly follow the instructions on confirmation page. </strong>
+    </div>
+  </div>
+</div>
 
