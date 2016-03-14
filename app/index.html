@@ -59,20 +59,9 @@
   </a>
 </div>
 <div class="loading" ng-show="false">Loading&#8230;</div>
-<div class="container MainOuter" ng-class="{coloredBackground:location.path()==='/buy' || location.path() ==='/event'}">
-  <div class="row" ng-if="location.path()==='/buy' || location.path() ==='/event'">
-    <div class="col-md-offset-1 col-md-10" style="padding-right:0px;padding-left:0px;">
-      <img ng-src="{{image.src}}" alt="img" class="EventBannerImage" ng-if="image.show">
-      <div class="transparencyLayer FirstBannerText" ng-if="image.show">
-        <span class="bannerText">{{eventName}}</span>
-      </div>
-      <!-- redundancy to show different Background if no image is present -->
-      <div class="transForNoBgImage" ng-if="!image.show">
-        <span class="bannerText">{{eventName}}</span>
-      </div>
-      <!--  redundancy end  -->
-    </div>
-  </div>
+<div class="container MainOuter"
+     ng-class="{coloredBackground:location.path()==='/buy' || location.path() ==='/event'}">
+  <banner-image></banner-image>
   <div ng-view=""></div>
 </div>
 
@@ -109,6 +98,7 @@
 <script src="scripts/controllers/registration/steptwo.js"></script>
 <script src="scripts/controllers/registration/stepthree.js"></script>
 <script src="scripts/controllers/rebook.js"></script>
+<script src="scripts/directives/bannerimage.js"></script>
 <!-- endbuild -->
 
 

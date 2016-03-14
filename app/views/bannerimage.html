@@ -1,0 +1,13 @@
+<div class="row" ng-if="location.path()==='/buy' || location.path() ==='/event'">
+  <div class="col-md-offset-1 col-md-10" style="padding-right:0px;padding-left:0px;">
+    <img ng-src="{{image.src}}" alt="img" class="EventBannerImage" ng-if="image.show">
+    <div class="transparencyLayer FirstBannerText" ng-if="image.show">
+      <span class="bannerText">{{eventName}}</span>
+    </div>
+    <!-- redundancy to show different Background if no image is present -->
+    <div class="transForNoBgImage" ng-if="!image.show">
+      <span class="bannerText">{{eventName}}</span>
+    </div>
+    <!--  redundancy end  -->
+  </div>
+</div>
