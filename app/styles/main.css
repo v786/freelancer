@@ -17,6 +17,10 @@ body {
   background-color: #E9EAEE !important;
 }
 
+.WhiteBackground{
+  background-color: #FFFFFF !important;
+}
+
 .bannerWithSiteLogo{
   padding : 1% 5% 1% 15%;
   background-color: #ffffff;
