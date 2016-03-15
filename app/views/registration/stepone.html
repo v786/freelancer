@@ -77,7 +77,7 @@
               </option>
               <option ng-repeat-end class="divider" disabled>------</option>
             </select>
-            <button class="btn btn-warning" ng-click="Progress.clearAllValues()">Clear All Fields</button>
+            <button class="btn btn-primary" ng-click="Progress.clearAllValues()">Clear All Fields</button>
           </form>
           <!-- copy content block end -->
 
@@ -86,9 +86,9 @@
             <h3 class="form-inline" ng-if="ProgressTicketIndex() == $index">TYPE : {{ticket.ticketName}}&nbsp; <small>INR:{{ticket.ticketPrice}}</small></h3>
             <hr class="blackRule" ng-if="ProgressTicketIndex() == $index">
             <formly-form model="ticket.vm.user" fields="ticket.vm.userFields" ng-if="ProgressTicketIndex() == $index">
-              <button type="submit" class="btn btn-primary" ng-if="!Progress.isLast(Progress.current)"
+              <button type="submit" class="btn btn-warning" ng-if="!Progress.isLast(Progress.current)"
                       ng-click="Progress.CheckAndProceedToNextStep();" ng-disabled="ticket.vm.user.$invalid">Save Details for this Participant</button>
-              <button type="submit" class="btn btn-primary" ng-if="Progress.isLast(Progress.current)"
+              <button type="submit" class="btn btn-warning" ng-if="Progress.isLast(Progress.current)"
                       ng-click="Progress.NextPhase();"  ng-disabled="ticket.vm.user.$invalid">Proceed to fill Billing Details</button>
               <hr>
             </formly-form>

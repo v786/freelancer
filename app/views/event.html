@@ -9,12 +9,11 @@
       <div class="col-md-2 StateButton" ng-class="{active:location.path() =='/buy'}" ng-click="location.path('/buy')">
         Buy Tickets
       </div>
-      <div class="col-md-8" style="border: 1px solid #E9EAEE">
-        <section class="floatRight eventTextWrapper">
-          <span>Event Organised By</span>
+      <div class="col-md-8 text-right" style="border: 2px solid #E9EAEE">
+        <section class="eventTextWrapper">
+          <span class="EventOrganiser">Event Organised By</span>
           <br>
-          <span class="eventText" ng-click="ShowOrganiserDetails();"
-                style="cursor: pointer; text-decoration: underline; color: #0e90d2">
+          <span class="eventText EventOrganiserValue" ng-click="ShowOrganiserDetails();">
             <strong>{{organiser.manager}}</strong>
           </span>
         </section>
