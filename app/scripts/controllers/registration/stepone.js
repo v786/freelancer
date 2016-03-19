@@ -21,7 +21,7 @@ angular.module('frApp')
     $scope.tickets.forEach(function (e) {
       e.$participantInformation = [];
       e.participantInformation = new Array(e.noOfTickets);
-      e.participantInformation.fill({});
+      //e.participantInformation.fill({});
     });
     /* Get Ticket end*/
 
