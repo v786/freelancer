@@ -145,7 +145,7 @@ angular.module('frApp')
         this.copyFromTicketNumber = 'select';
       },
       submit : function(f){
-        $rootScope.BillingUserDetails = Object.assign({}, f);
+        $rootScope.BillingUserDetails = angular.copy(f);
         var regex = /formly_\w+/; //remove property formly_1
         var delProp = findPropertyNameByRegex($rootScope.BillingUserDetails, regex);
         if (delProp){
